@@ -1,228 +1,1511 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The 3-Step Crocodile Brain Pitch + Leverage Vocab — Preply Lesson Notes</title>
+  <title>Inga's English Studio | The 3-Step Pitch & Understanding "Leverage"</title>
+
+  <!-- Google Fonts: Cormorant Garamond (Editorial Serif), Plus Jakarta Sans (Clean Modern UI), JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            blush: {
+              50: '#fdf8f6',
+              100: '#faeee9',
+              200: '#f4dcd3',
+              300: '#eabdb0',
+              400: '#dc9583',
+              500: '#c86d58',
+              600: '#b0523e',
+              700: '#924130',
+            },
+            sage: {
+              50: '#f4f8f6',
+              100: '#e4efe9',
+              200: '#c9dfd4',
+              500: '#538a74',
+              600: '#3f6e5c',
+              700: '#34584b',
+            },
+            champagne: {
+              50: '#fbf9f3',
+              100: '#f5efe0',
+              200: '#eadcc0',
+              500: '#be894c',
+              600: '#aa713e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- GSAP (GreenSock Animation Platform) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+
+  <!-- Popper & Tippy.js for Interactive Vocabulary Tooltips -->
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-away.css" />
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    :root {
+      --bg-base: #fdf9f5;
+      --bg-card: rgba(255, 255, 255, 0.94);
+      --bg-subcard: #ffffff;
+      --border-card: #f0e1d8;
+      --border-subcard: #ece0d6;
+      --grad-1: rgba(250, 238, 233, 0.85);
+      --grad-2: rgba(228, 239, 233, 0.75);
+      --grad-3: rgba(245, 239, 224, 0.75);
+    }
+
+    body[data-palette="daylight"] {
+      --bg-base: #f6faf9;
+      --bg-card: rgba(255, 255, 255, 0.94);
+      --bg-subcard: #ffffff;
+      --border-card: #d5e8e2;
+      --border-subcard: #dcece7;
+      --grad-1: rgba(209, 250, 229, 0.55);
+      --grad-2: rgba(224, 242, 254, 0.55);
+      --grad-3: rgba(254, 243, 199, 0.45);
+    }
+
+    body[data-palette="sky"] {
+      --bg-base: #f4f8ff;
+      --bg-card: rgba(255, 255, 255, 0.94);
+      --bg-subcard: #ffffff;
+      --border-card: #dbeafe;
+      --border-subcard: #e0e7ff;
+      --grad-1: rgba(186, 230, 253, 0.50);
+      --grad-2: rgba(224, 231, 255, 0.55);
+      --grad-3: rgba(209, 250, 229, 0.40);
+    }
+
+    body {
+      background-color: var(--bg-base);
+      background-image:
+        radial-gradient(at 0% 0%, var(--grad-1) 0px, transparent 50%),
+        radial-gradient(at 100% 15%, var(--grad-2) 0px, transparent 50%),
+        radial-gradient(at 50% 85%, var(--grad-3) 0px, transparent 52%);
+      background-attachment: fixed;
+      color: #2d232e;
+      transition: background-color 0.3s ease;
+    }
+
+    .glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border-card);
+      box-shadow: 0 14px 40px -10px rgba(146, 65, 48, 0.07), 0 4px 14px -2px rgba(45, 35, 46, 0.03);
+    }
+
+    .glass-subcard {
+      background: var(--bg-subcard);
+      border: 1px solid var(--border-subcard);
+      box-shadow: 0 4px 14px -4px rgba(146, 65, 48, 0.05);
+    }
+
+    /* Custom Tippy Tooltip Theme (Light & Warm) */
+    .tippy-box[data-theme~='executive'] {
+      background-color: #ffffff;
+      color: #2d232e;
+      border: 1px solid #eabdb0;
+      border-radius: 0.85rem;
+      box-shadow: 0 18px 30px -6px rgba(146, 65, 48, 0.14), 0 6px 12px -4px rgba(45, 35, 46, 0.06);
+      padding: 0.45rem 0.55rem;
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+    .tippy-box[data-theme~='executive'][data-placement^='top'] > .tippy-arrow::before {
+      border-top-color: #eabdb0;
+    }
+
+    .vocab-highlight {
+      border-bottom: 2px dashed currentColor;
+      cursor: help;
+      transition: all 0.15s ease;
+      padding: 1px 4px;
+      border-radius: 5px;
+    }
+    .vocab-highlight:hover {
+      background-color: rgba(16, 185, 129, 0.14);
+    }
+
+    /* Range Slider Styling (Light Theme) */
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+    }
+    input[type="range"]::-webkit-slider-runnable-track {
+      height: 8px;
+      border-radius: 999px;
+      background: #f1e6de;
+      border: 1px solid #e2d1c5;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background: #059669;
+      border: 2.5px solid #ffffff;
+      margin-top: -7px;
+      box-shadow: 0 2px 8px rgba(5, 150, 105, 0.35);
+      transition: transform 0.15s ease, background-color 0.15s ease;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+      background: #047857;
+    }
+
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #fff !important; color: #000 !important; }
+      .glass-card, .glass-subcard { background: #fff !important; border-color: #cbd5e1 !important; color: #000 !important; box-shadow: none !important; }
+    }
+  </style>
 </head>
-<body class="bg-slate-950 text-slate-100 antialiased min-h-screen p-6 md:p-10">
-  <div class="max-w-4xl mx-auto space-y-10">
-    <!-- Header -->
-    <header class="border-b border-slate-800 pb-6">
-      <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400">25-Minute Preply Trial Lesson Notes</span>
-      <h1 class="text-3xl font-bold mt-1">The "Crocodile / Lizard Brain" 3-Step Pitch & "Leverage" Vocabulary</h1>
-      <p class="text-slate-400 mt-2 text-sm">
-        How the 3-Step Executive Pitch Framework gets past the primitive brain, plus how <strong>Physics Leverage</strong> relates to <strong>Business & Trading Leverage</strong>.
-      </p>
+<body data-palette="ivory" class="antialiased min-h-screen selection:bg-blush-200 selection:text-stone-900">
+
+  <!-- Top Sticky Navigation Bar -->
+  <nav class="sticky top-0 z-50 border-b border-blush-200/80 bg-[#fdf9f5]/90 backdrop-blur-md shadow-sm no-print">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-2.5 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-blush-500 via-amber-500 to-emerald-600 flex items-center justify-center text-white font-serif text-2xl font-bold shadow-md shadow-blush-500/20">
+          I
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-serif font-bold text-xl sm:text-2xl tracking-tight text-stone-900">Inga's English Studio</span>
+            <span class="px-2.5 py-0.5 text-[11px] font-semibold rounded-full bg-blush-100 text-blush-700 border border-blush-200">Lesson Notes & Practice</span>
+          </div>
+          <p class="text-xs text-stone-500 hidden sm:block">How to Pitch Any Idea (3 Easy Steps) & Understand "Leverage"</p>
+        </div>
+      </div>
+
+      <!-- Quick Section Links -->
+      <div class="hidden xl:flex items-center gap-1 text-xs font-semibold text-stone-600 bg-white/90 border border-blush-200/80 rounded-xl p-1 shadow-sm">
+        <a href="#neuro-filter" class="px-3 py-1.5 rounded-lg hover:bg-blush-50 hover:text-blush-700 transition">1. How Brains Listen</a>
+        <a href="#pitch-framework" class="px-3 py-1.5 rounded-lg hover:bg-blush-50 hover:text-blush-700 transition">2. 3-Step Pitch</a>
+        <a href="#pitch-builder" class="px-3 py-1.5 rounded-lg hover:bg-blush-50 hover:text-blush-700 transition">3. Practice Studio</a>
+        <a href="#leverage-lab" class="px-3 py-1.5 rounded-lg hover:bg-blush-50 hover:text-blush-700 transition">4. What is "Leverage"?</a>
+        <a href="#glossary" class="px-3 py-1.5 rounded-lg bg-blush-100/80 text-blush-700 hover:bg-blush-200/70 transition">5. Word List & Quiz</a>
+      </div>
+
+      <!-- Voice Speed, Light Palette Switcher & Print Utility -->
+      <div class="flex items-center gap-2">
+        <!-- Learner Voice Speed Selector -->
+        <div class="flex items-center gap-1 bg-white border border-blush-200 rounded-xl px-2.5 py-1 shadow-sm text-xs font-medium text-stone-600" title="Audio Pronunciation Speed">
+          <i data-lucide="volume-2" class="w-3.5 h-3.5 text-blush-500"></i>
+          <button onclick="setSpeechRate(0.82)" id="rate-slow" class="px-2 py-0.5 rounded-lg bg-emerald-600 text-white font-semibold transition">Slow 0.8x</button>
+          <button onclick="setSpeechRate(0.98)" id="rate-normal" class="px-2 py-0.5 rounded-lg text-stone-600 hover:bg-stone-100 transition">Normal 1x</button>
+        </div>
+
+        <!-- Light Theme Color Selector -->
+        <div class="hidden md:flex items-center gap-1 bg-white border border-blush-200 rounded-xl p-1 text-[11px] font-medium shadow-sm" title="Choose Light Theme Color">
+          <button onclick="setPalette('ivory')" id="pal-ivory" class="px-2.5 py-1 rounded-lg bg-blush-100 text-blush-700 font-semibold transition flex items-center gap-1">
+            <span class="w-2.5 h-2.5 rounded-full bg-blush-400"></span>
+            <span>Warm Cream</span>
+          </button>
+          <button onclick="setPalette('daylight')" id="pal-daylight" class="px-2.5 py-1 rounded-lg text-stone-600 hover:text-stone-900 transition flex items-center gap-1">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+            <span>Mint Light</span>
+          </button>
+          <button onclick="setPalette('sky')" id="pal-sky" class="px-2.5 py-1 rounded-lg text-stone-600 hover:text-stone-900 transition flex items-center gap-1">
+            <span class="w-2.5 h-2.5 rounded-full bg-sky-400"></span>
+            <span>Soft Sky</span>
+          </button>
+        </div>
+
+        <button onclick="window.print()" class="px-3 py-1.5 rounded-xl bg-white hover:bg-blush-50 border border-blush-200 text-xs font-semibold text-stone-700 flex items-center gap-1.5 shadow-sm transition" title="Print or Save as PDF">
+          <i data-lucide="printer" class="w-3.5 h-3.5 text-blush-500"></i>
+          <span class="hidden sm:inline">Save PDF</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10 space-y-10">
+
+    <!-- HERO HEADER -->
+    <header class="relative rounded-3xl overflow-hidden glass-card p-6 sm:p-10">
+      <div class="absolute -right-16 -top-16 w-72 h-72 bg-amber-200/35 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-16 -bottom-16 w-72 h-72 bg-emerald-200/35 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-8 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blush-100/90 border border-blush-200 text-blush-700 text-xs font-semibold">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i>
+            <span>Confident Business English • Easy Speaking & Vocabulary Guide</span>
+          </div>
+          <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-stone-900 leading-[1.15]">
+            Pitching to the <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-emerald-600 to-teal-600">"Crocodile Brain"</span> & The Meaning of <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-600">Leverage</span>
+          </h1>
+          <p class="text-stone-600 text-sm sm:text-base leading-relaxed max-w-2xl">
+            Welcome, Inga! This is your friendly, step-by-step guide from our lesson. Learn the <strong class="text-stone-800">3-Step Pitch Formula</strong> that gets busy people to say <em>"Yes"</em> to your ideas, practice building your own pitch, and see how the word <strong class="text-stone-800">"Leverage"</strong> works in everyday life and business.
+          </p>
+          <div class="flex flex-wrap items-center gap-3 pt-2 text-xs text-stone-700">
+            <div class="flex items-center gap-1.5 bg-amber-50/90 px-3 py-1.5 rounded-xl border border-amber-200/80">
+              <i data-lucide="mouse-pointer-click" class="w-4 h-4 text-amber-600"></i>
+              <span><strong>Hover Tip:</strong> Move your mouse over underlined words for simple meanings</span>
+            </div>
+            <div class="flex items-center gap-1.5 bg-emerald-50/90 px-3 py-1.5 rounded-xl border border-emerald-200/80">
+              <i data-lucide="volume-2" class="w-4 h-4 text-emerald-600"></i>
+              <span><strong>Audio Tip:</strong> Click any speaker icon to hear clear pronunciation</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Executive Summary Stat Cards -->
+        <div class="lg:col-span-4 grid grid-cols-2 gap-3">
+          <div class="p-4 rounded-2xl bg-amber-50/90 border border-amber-200 border-l-4 border-l-amber-500 shadow-sm">
+            <div class="flex items-center justify-between text-amber-700 mb-1">
+              <span class="text-[11px] font-mono font-bold uppercase tracking-wider">Step 01</span>
+              <i data-lucide="radar" class="w-4 h-4"></i>
+            </div>
+            <div class="font-display font-bold text-stone-900 text-sm">Macro Shift</div>
+            <p class="text-[11px] text-stone-600 mt-1">Start with a big change in the world</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-rose-50/90 border border-rose-200 border-l-4 border-l-rose-500 shadow-sm">
+            <div class="flex items-center justify-between text-rose-700 mb-1">
+              <span class="text-[11px] font-mono font-bold uppercase tracking-wider">Step 02</span>
+              <i data-lucide="zap" class="w-4 h-4"></i>
+            </div>
+            <div class="font-display font-bold text-stone-900 text-sm">The Problem</div>
+            <p class="text-[11px] text-stone-600 mt-1">Show why old habits are costing money</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-emerald-50/90 border border-emerald-200 border-l-4 border-l-emerald-500 shadow-sm">
+            <div class="flex items-center justify-between text-emerald-700 mb-1">
+              <span class="text-[11px] font-mono font-bold uppercase tracking-wider">Step 03</span>
+              <i data-lucide="anchor" class="w-4 h-4"></i>
+            </div>
+            <div class="font-display font-bold text-stone-900 text-sm">Value Anchor</div>
+            <p class="text-[11px] text-stone-600 mt-1">Share 1 clear result with a number</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-indigo-50/90 border border-indigo-200 border-l-4 border-l-indigo-500 shadow-sm">
+            <div class="flex items-center justify-between text-indigo-700 mb-1">
+              <span class="text-[11px] font-mono font-bold uppercase tracking-wider">Key Word</span>
+              <i data-lucide="scale" class="w-4 h-4"></i>
+            </div>
+            <div class="font-display font-bold text-stone-900 text-sm">Leverage (Nx)</div>
+            <p class="text-[11px] text-stone-600 mt-1">Use a small effort to get a big result</p>
+          </div>
+        </div>
+      </div>
     </header>
 
-    <!-- PART 1: THE 3-STEP CROCODILE BRAIN FRAMEWORK -->
-    <section class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-lg space-y-6">
-      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+    <!-- SECTION 1: WHY THE CROCODILE BRAIN CONTROLS THE PITCH -->
+    <section id="neuro-filter" class="glass-card rounded-3xl p-6 sm:p-8 space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-blush-200/80 pb-5">
         <div>
-          <h2 class="text-xl font-bold text-white">Part 1: The 3-Step "Crocodile Brain" Pitch Framework</h2>
-          <p class="text-xs text-slate-400 mt-0.5">How each step of the script is engineered to wake up the primitive brain without triggering resistance.</p>
+          <span class="text-xs font-mono font-semibold uppercase tracking-widest text-amber-600">Part 1A • How Listeners Think</span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-900 mt-1">Why the "Crocodile Brain" Decides First</h2>
+          <p class="text-xs sm:text-sm text-stone-600 mt-1 leading-relaxed">
+            When you share an idea at work, you think you are talking to the listener's <strong class="text-stone-800">Logical Brain</strong>. Actually, your message goes through their <strong class="text-stone-800">"Crocodile Brain"</strong> first—the fast, emotional part of the brain that asks: <em>"Is this safe? Is this boring? Why should I care?"</em>
+          </p>
         </div>
-        <div class="flex flex-wrap gap-1.5 bg-slate-800 p-1 rounded-lg">
-          <button id="ex-template" onclick="setExample('template')" class="px-3 py-1.5 text-xs font-medium rounded-md text-slate-300 hover:text-white">
-            📋 Lesson Template
+        <div class="flex items-center gap-2 self-start md:self-center shrink-0">
+          <span class="px-3.5 py-2 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 flex items-center gap-2 shadow-sm">
+            <i data-lucide="heart-handshake" class="w-4 h-4 text-amber-600"></i>
+            <span>Key Rule: People hate <strong>losing</strong> 2× more than they love <strong>winning</strong></span>
+          </span>
+        </div>
+      </div>
+
+      <!-- 4 Rules of the Gatekeeper -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="glass-subcard rounded-2xl p-4 space-y-2 hover:border-amber-300 transition">
+          <div class="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+            <i data-lucide="eye-off" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-display font-bold text-sm text-stone-900">1. Ignores Boring Starts</h3>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            A real crocodile ignores things that do not move. If you start a meeting with long company history, people stop listening right away.
+          </p>
+        </div>
+
+        <div class="glass-subcard rounded-2xl p-4 space-y-2 hover:border-rose-300 transition">
+          <div class="w-9 h-9 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center">
+            <i data-lucide="cpu" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-display font-bold text-sm text-stone-900">2. Hates Complicated Details</h3>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Too many numbers or technical words make the brain tired. When a busy boss feels tired or confused, they say "No" just to stop thinking.
+          </p>
+        </div>
+
+        <div class="glass-subcard rounded-2xl p-4 space-y-2 hover:border-amber-300 transition">
+          <div class="w-9 h-9 rounded-xl bg-blush-100 text-blush-600 flex items-center justify-center">
+            <i data-lucide="swords" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-display font-bold text-sm text-stone-900">3. Gets Angry If Blamed</h3>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Never say <em>"You are doing this wrong."</em> That makes people defensive. Instead, blame <strong class="text-stone-800">old systems or old habits</strong> (called <em>legacy approaches</em>).
+          </p>
+        </div>
+
+        <div class="rounded-2xl p-4 space-y-2 border border-emerald-200 bg-emerald-50/80 shadow-sm">
+          <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
+            <i data-lucide="key-round" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-display font-bold text-sm text-emerald-950">4. Wakes Up to Change + Help</h3>
+          <p class="text-xs text-emerald-900/85 leading-relaxed">
+            The brain pays attention when it sees: <strong>1) a change in the world</strong>, <strong>2) a clear cost</strong>, and <strong>3) an easy, safe solution</strong>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: THE 3-STEP CROCODILE BRAIN PITCH FRAMEWORK -->
+    <section id="pitch-framework" class="glass-card rounded-3xl p-6 sm:p-8 space-y-6">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-blush-200/80 pb-5">
+        <div>
+          <span class="text-xs font-mono font-semibold uppercase tracking-widest text-emerald-600">Part 1B • The 3-Step Pitch Formula</span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-900 mt-1">Interactive 3-Step Pitch Examples</h2>
+          <p class="text-xs sm:text-sm text-stone-600 mt-1">
+            Click the 4 green/white buttons below to see how the exact same 3 steps work for business, finance, or asking your boss for <strong>"Bring Your Dog Fridays"</strong>!
+          </p>
+        </div>
+
+        <!-- Scenario Selector Buttons -->
+        <div class="flex flex-wrap gap-1.5 bg-blush-50 p-1.5 rounded-2xl border border-blush-200">
+          <button id="btn-template" onclick="setExample('template')" class="scenario-btn px-3 py-2 text-xs font-semibold rounded-xl transition flex items-center gap-1.5 bg-emerald-600 text-white shadow-sm">
+            <i data-lucide="layout-template" class="w-3.5 h-3.5"></i>
+            <span>1. Main Formula</span>
           </button>
-          <button id="ex-dog" onclick="setExample('dog')" class="px-3 py-1.5 text-xs font-medium rounded-md bg-emerald-600 text-white">
-            🐶 Boss Pitch: "Bring Your Dog Fridays"
+          <button id="btn-dog" onclick="setExample('dog')" class="scenario-btn px-3 py-2 text-xs font-semibold rounded-xl transition flex items-center gap-1.5 text-stone-700 hover:text-stone-900 hover:bg-white">
+            <i data-lucide="dog" class="w-3.5 h-3.5"></i>
+            <span>2. Fun: Dog Fridays!</span>
           </button>
-          <button id="ex-ai" onclick="setExample('ai')" class="px-3 py-1.5 text-xs font-medium rounded-md text-slate-300 hover:text-white">
-            💼 B2B Example
+          <button id="btn-ai" onclick="setExample('ai')" class="scenario-btn px-3 py-2 text-xs font-semibold rounded-xl transition flex items-center gap-1.5 text-stone-700 hover:text-stone-900 hover:bg-white">
+            <i data-lucide="truck" class="w-3.5 h-3.5"></i>
+            <span>3. Delivery Pitch</span>
+          </button>
+          <button id="btn-fintech" onclick="setExample('fintech')" class="scenario-btn px-3 py-2 text-xs font-semibold rounded-xl transition flex items-center gap-1.5 text-stone-700 hover:text-stone-900 hover:bg-white">
+            <i data-lucide="landmark" class="w-3.5 h-3.5"></i>
+            <span>4. Finance Pitch</span>
           </button>
         </div>
       </div>
 
-      <!-- 3-Step Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="p-4 rounded-xl border border-amber-500/50 bg-slate-950/70 flex flex-col justify-between">
+      <!-- Contrast Banner: Weak Pitch vs 3-Step Pitch -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
+        <div class="lg:col-span-5 rounded-2xl bg-rose-50/80 border border-rose-200 p-4 flex flex-col justify-between shadow-sm">
           <div>
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold uppercase tracking-wide text-amber-400">Step 1: The Macro Shift</span>
-              <span class="px-2 py-0.5 text-xs font-semibold rounded bg-amber-500/20 text-amber-300">🦎 Wakes Up</span>
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-rose-700">
+                <i data-lucide="x-circle" class="w-4 h-4"></i>
+                <span>Weak Opening (What Most People Say)</span>
+              </span>
+              <button onclick="speakText(document.getElementById('bad-pitch-quote').innerText)" class="text-rose-600 hover:text-rose-800 bg-white hover:bg-rose-50 rounded-lg border border-rose-200 transition p-1.5" title="Listen to Weak Pitch">
+                <i data-lucide="volume-2" class="w-4 h-4"></i>
+              </button>
             </div>
-            <p class="text-xs italic mt-2 p-2.5 rounded bg-slate-900 border border-slate-800 text-slate-200" id="step1-quote">
-              "Over the past <strong class="text-amber-400">[6-18 months]</strong>, the market / operational landscape in <strong class="text-amber-400">[industry]</strong> has shifted..."
+            <p id="bad-pitch-quote" class="text-xs italic text-stone-700 bg-white p-3.5 rounded-xl border border-rose-200/80 leading-relaxed shadow-sm">
+              "Hi everyone, today I want to show you 30 slides about our company history and software details so you can approve our budget."
             </p>
           </div>
-          <div class="mt-3 pt-2.5 border-t border-slate-800 text-xs text-slate-400">
-            <strong class="text-slate-200">Crocodile Brain Effect:</strong> A crocodile ignores static things, but <em>movement in its environment</em> triggers instant attention—with zero personal threat.
-          </div>
+          <p id="bad-pitch-reason" class="text-[11px] text-rose-800 mt-3 pt-2 border-t border-rose-200/80">
+            <strong>Why it fails:</strong> It sounds boring, takes too much mental energy, and asks for money too early = <strong>The listener stops paying attention.</strong>
+          </p>
         </div>
 
-        <div class="p-4 rounded-xl border border-rose-500/50 bg-slate-950/70 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold uppercase tracking-wide text-rose-400">Step 2: High-Stakes Friction</span>
-              <span class="px-2 py-0.5 text-xs font-semibold rounded bg-rose-500/20 text-rose-300">⚡ Survival / Pain</span>
+        <!-- Brain Telemetry Gauges -->
+        <div class="lg:col-span-7 glass-subcard rounded-2xl p-4 flex flex-col justify-between">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 flex items-center gap-1.5">
+              <i data-lucide="smile" class="w-4 h-4"></i>
+              <span>How the Listener Reacts to Your 3-Step Pitch</span>
+            </span>
+            <div class="flex items-center gap-2">
+              <button onclick="speakFullPitch()" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm transition">
+                <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
+                <span>Listen to All 3 Steps</span>
+              </button>
+              <button onclick="copyActivePitch()" class="px-2.5 py-1.5 rounded-xl bg-blush-50 hover:bg-blush-100 border border-blush-200 text-stone-700 text-xs font-semibold flex items-center gap-1.5 transition">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span id="copy-pitch-label">Copy</span>
+              </button>
             </div>
-            <p class="text-xs italic mt-2 p-2.5 rounded bg-slate-900 border border-slate-800 text-slate-200" id="step2-quote">
-              "Yet, most organizations are still relying on <strong class="text-rose-400">legacy approaches</strong>, leading to <strong class="text-rose-400">[cost / bottleneck]</strong>..."
-            </p>
           </div>
-          <div class="mt-3 pt-2.5 border-t border-slate-800 text-xs text-slate-400">
-            <strong class="text-slate-200">Crocodile Brain Effect:</strong> <em>"Yet..."</em> creates sharp contrast. Blaming <em>"legacy approaches"</em> protects their ego while triggering <strong>loss aversion</strong> (inaction = pain).
-          </div>
-        </div>
 
-        <div class="p-4 rounded-xl border border-emerald-500/50 bg-slate-950/70 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold uppercase tracking-wide text-emerald-400">Step 3: The Value Anchor</span>
-              <span class="px-2 py-0.5 text-xs font-semibold rounded bg-emerald-500/20 text-emerald-300">🧠 Unlocks Logic</span>
+          <div class="grid grid-cols-3 gap-3 my-auto py-1">
+            <div class="bg-amber-50/70 p-3 rounded-xl border border-amber-200">
+              <div class="flex justify-between text-[11px] text-stone-700 mb-1">
+                <span class="font-semibold">Attention</span>
+                <span class="font-mono font-bold text-amber-700">High (96%)</span>
+              </div>
+              <div class="w-full h-2 bg-amber-100 rounded-full overflow-hidden">
+                <div class="h-full bg-amber-500 rounded-full" style="width: 96%"></div>
+              </div>
+              <p class="text-[10px] text-stone-600 mt-1.5">Step 1 wakes up interest</p>
             </div>
-            <p class="text-xs italic mt-2 p-2.5 rounded bg-slate-900 border border-slate-800 text-slate-200" id="step3-quote">
-              "Our objective today is to explore how <strong class="text-emerald-400">[our solution]</strong> eliminates this friction and delivers <strong class="text-emerald-400">[specific, quantified outcome]</strong>."
-            </p>
-          </div>
-          <div class="mt-3 pt-2.5 border-t border-slate-800 text-xs text-slate-400">
-            <strong class="text-slate-200">Crocodile Brain Effect:</strong> <em>"Explore how"</em> lowers pressure (safe!), promises relief from friction, and hands the Logical Brain <strong>1 tangible number</strong>.
+
+            <div class="bg-emerald-50/70 p-3 rounded-xl border border-emerald-200">
+              <div class="flex justify-between text-[11px] text-stone-700 mb-1">
+                <span class="font-semibold">Feeling Attacked</span>
+                <span class="font-mono font-bold text-emerald-700">Very Low</span>
+              </div>
+              <div class="w-full h-2 bg-emerald-100 rounded-full overflow-hidden">
+                <div class="h-full bg-emerald-500 rounded-full" style="width: 12%"></div>
+              </div>
+              <p class="text-[10px] text-stone-600 mt-1.5">Step 2 blames "old habits"</p>
+            </div>
+
+            <div class="bg-indigo-50/70 p-3 rounded-xl border border-indigo-200">
+              <div class="flex justify-between text-[11px] text-stone-700 mb-1">
+                <span class="font-semibold">Ready to Listen</span>
+                <span class="font-mono font-bold text-indigo-700">Yes!</span>
+              </div>
+              <div class="w-full h-2 bg-indigo-100 rounded-full overflow-hidden">
+                <div class="h-full bg-indigo-500 rounded-full" style="width: 94%"></div>
+              </div>
+              <p class="text-[10px] text-stone-600 mt-1.5">Step 3 gives 1 clear number</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Vocab Grid for the 3-Step Pitch -->
-      <div class="pt-2">
-        <h3 class="text-sm font-semibold text-slate-200 mb-3">Key Vocabulary from the 3-Step Pitch:</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs">
-          <div class="p-3 rounded-lg bg-slate-950/50 border border-slate-800">
-            <strong class="text-amber-400">Macro shift</strong>
-            <p class="text-slate-400 mt-1">A big-picture, industry-wide change in the environment (vs. <em>micro</em> details).</p>
+      <!-- 3-Step Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <!-- STEP 1 -->
+        <div class="step-card p-5 rounded-2xl border border-amber-200 bg-gradient-to-b from-amber-50/80 to-white flex flex-col justify-between relative overflow-hidden shadow-sm">
+          <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-amber-500 to-orange-400"></div>
+          <div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-xs font-mono font-bold uppercase tracking-wider text-amber-800">Step 1 • The Macro Shift</span>
+              <div class="flex items-center gap-1.5">
+                <span class="px-2 py-0.5 text-[11px] font-semibold rounded-md bg-amber-100 text-amber-800 border border-amber-200">🦎 Gets Attention</span>
+                <button onclick="speakStep(1)" class="p-1.5 rounded-lg bg-white hover:bg-amber-50 text-stone-600 hover:text-amber-700 border border-amber-200 transition" title="Listen to Step 1">
+                  <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="mt-3 p-3.5 rounded-xl bg-white border border-amber-200 text-xs sm:text-sm leading-relaxed text-stone-800 font-medium min-h-[112px] flex items-center shadow-sm">
+              <p id="step1-quote">
+                "Over the past <strong class="text-amber-700">[6–18 months]</strong>, the market and <span class="vocab-highlight text-amber-800 bg-amber-50" data-tippy-content="<strong>Operational landscape:</strong> The everyday reality of how businesses work right now.">operational landscape</span> in <strong class="text-amber-700">[industry]</strong> has undergone a major <span class="vocab-highlight text-amber-800 bg-amber-50" data-tippy-content="<strong>Macro shift:</strong> A big change happening across the whole industry or world.">macro shift</span>..."
+              </p>
+            </div>
           </div>
-          <div class="p-3 rounded-lg bg-slate-950/50 border border-slate-800">
-            <strong class="text-amber-400">Operational landscape</strong>
-            <p class="text-slate-400 mt-1">The overall environment and day-to-day reality of how businesses operate.</p>
+
+          <div class="mt-4 pt-3 border-t border-amber-200/60 text-xs text-stone-600 space-y-1.5">
+            <div class="font-bold text-stone-800 flex items-center gap-1.5">
+              <i data-lucide="lightbulb" class="w-3.5 h-3.5 text-amber-600"></i>
+              <span>Simple Explanation (Why it works):</span>
+            </div>
+            <p class="leading-relaxed">
+              Start by talking about <strong>a big change in the outside world</strong>. This wakes up the listener's attention immediately without making them feel criticized.
+            </p>
           </div>
-          <div class="p-3 rounded-lg bg-slate-950/50 border border-slate-800">
-            <strong class="text-rose-400">Legacy approaches</strong>
-            <p class="text-slate-400 mt-1">Old, outdated methods or technology still used out of habit.</p>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step-card p-5 rounded-2xl border border-rose-200 bg-gradient-to-b from-rose-50/80 to-white flex flex-col justify-between relative overflow-hidden shadow-sm">
+          <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-rose-500 to-pink-500"></div>
+          <div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-xs font-mono font-bold uppercase tracking-wider text-rose-800">Step 2 • The Cost of Old Habits</span>
+              <div class="flex items-center gap-1.5">
+                <span class="px-2 py-0.5 text-[11px] font-semibold rounded-md bg-rose-100 text-rose-800 border border-rose-200">⚡ Shows the Problem</span>
+                <button onclick="speakStep(2)" class="p-1.5 rounded-lg bg-white hover:bg-rose-50 text-stone-600 hover:text-rose-700 border border-rose-200 transition" title="Listen to Step 2">
+                  <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="mt-3 p-3.5 rounded-xl bg-white border border-rose-200 text-xs sm:text-sm leading-relaxed text-stone-800 font-medium min-h-[112px] flex items-center shadow-sm">
+              <p id="step2-quote">
+                "Yet, most organizations are still relying on <span class="vocab-highlight text-rose-800 bg-rose-50" data-tippy-content="<strong>Legacy approaches:</strong> Old ways of working or old tools that companies keep using out of habit.">legacy approaches</span>, leading to severe <span class="vocab-highlight text-rose-800 bg-rose-50" data-tippy-content="<strong>Bottleneck:</strong> Like the narrow neck of a bottle—one slow step that slows down everything else.">bottlenecks</span> and <strong class="text-rose-700">[cost / lost time]</strong>..."
+              </p>
+            </div>
           </div>
-          <div class="p-3 rounded-lg bg-slate-950/50 border border-slate-800">
-            <strong class="text-rose-400">High-stakes friction / Bottleneck</strong>
-            <p class="text-slate-400 mt-1">Serious obstacles or congestion points that slow down a system and waste money.</p>
+
+          <div class="mt-4 pt-3 border-t border-rose-200/60 text-xs text-stone-600 space-y-1.5">
+            <div class="font-bold text-stone-800 flex items-center gap-1.5">
+              <i data-lucide="flame" class="w-3.5 h-3.5 text-rose-600"></i>
+              <span>Simple Explanation (Why it works):</span>
+            </div>
+            <p class="leading-relaxed">
+              Say <em>"Yet, most organizations still use legacy approaches (old ways)..."</em> This politely shows that <strong>doing nothing is losing money</strong>, without blaming the listener personally.
+            </p>
           </div>
-          <div class="p-3 rounded-lg bg-slate-950/50 border border-slate-800">
-            <strong class="text-emerald-400">Value anchor</strong>
-            <p class="text-slate-400 mt-1">Setting a clear, high-value reference point in the listener's mind right at the start.</p>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step-card p-5 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50/80 to-white flex flex-col justify-between relative overflow-hidden shadow-sm">
+          <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-emerald-500 to-teal-500"></div>
+          <div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-xs font-mono font-bold uppercase tracking-wider text-emerald-800">Step 3 • The Value Anchor</span>
+              <div class="flex items-center gap-1.5">
+                <span class="px-2 py-0.5 text-[11px] font-semibold rounded-md bg-emerald-100 text-emerald-800 border border-emerald-200">🧠 1 Clear Number</span>
+                <button onclick="speakStep(3)" class="p-1.5 rounded-lg bg-white hover:bg-emerald-50 text-stone-600 hover:text-emerald-700 border border-emerald-200 transition" title="Listen to Step 3">
+                  <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="mt-3 p-3.5 rounded-xl bg-white border border-emerald-200 text-xs sm:text-sm leading-relaxed text-stone-800 font-medium min-h-[112px] flex items-center shadow-sm">
+              <p id="step3-quote">
+                "Our objective today is to explore how <strong class="text-emerald-700">[our solution]</strong> eliminates this <span class="vocab-highlight text-emerald-800 bg-emerald-50" data-tippy-content="<strong>Friction:</strong> Anything that makes work slower, harder, or more frustrating than it should be.">friction</span> and delivers <span class="vocab-highlight text-emerald-800 bg-emerald-50" data-tippy-content="<strong>Quantified outcome:</strong> A clear result with a real number (like %, $, or hours saved).">[1 clear result with a number]</span>."
+              </p>
+            </div>
           </div>
-          <div class="p-3 rounded-lg bg-slate-950/50 border border-slate-800">
-            <strong class="text-emerald-400">Quantified outcome</strong>
-            <p class="text-slate-400 mt-1">A result measured with a specific number (%, $, or hours saved) rather than a vague claim.</p>
+
+          <div class="mt-4 pt-3 border-t border-emerald-200/60 text-xs text-stone-600 space-y-1.5">
+            <div class="font-bold text-stone-800 flex items-center gap-1.5">
+              <i data-lucide="unlock" class="w-3.5 h-3.5 text-emerald-600"></i>
+              <span>Simple Explanation (Why it works):</span>
+            </div>
+            <p class="leading-relaxed">
+              The word <em>"explore"</em> feels friendly and low-pressure. Then, give <strong>one clear number</strong> (a <em>Value Anchor</em>) so their logical brain wants to hear your plan!
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PART 2: VOCABULARY SPOTLIGHT — LEVERAGE (PHYSICS vs TRADING) -->
-    <section class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-lg space-y-5">
-      <div class="border-b border-slate-800 pb-4">
-        <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Vocabulary Spotlight</span>
-        <h2 class="text-xl font-bold text-white mt-0.5">What Does "Leverage" Mean? (Physics vs. Business & Trading)</h2>
-        <p class="text-xs text-slate-400 mt-0.5">How the physical machine (a lever on a fulcrum) gave birth to the financial & business vocabulary.</p>
+    <!-- SECTION 3: INTERACTIVE EXECUTIVE PITCH BUILDER STUDIO -->
+    <section id="pitch-builder" class="glass-card rounded-3xl p-6 sm:p-8 space-y-6 no-print">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-blush-200/80 pb-4">
+        <div>
+          <span class="text-xs font-mono font-semibold uppercase tracking-widest text-teal-600">Part 1C • Your Speaking Practice Studio</span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-900 mt-1">Build & Practice Your Own 3-Step Pitch</h2>
+          <p class="text-xs sm:text-sm text-stone-600 mt-0.5">
+            Type your own ideas into the 6 boxes below. Then click <strong>"Listen & Practice Speaking"</strong> to hear how it sounds in natural English!
+          </p>
+        </div>
+        <button onclick="resetCustomBuilder()" class="self-start sm:self-center px-3 py-1.5 rounded-xl bg-blush-50 hover:bg-blush-100 border border-blush-200 text-xs font-semibold text-stone-700 flex items-center gap-1.5 transition">
+          <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+          <span>Reset Example</span>
+        </button>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-        <div class="md:col-span-6 flex flex-col items-center">
-          <svg id="lever-svg" viewBox="0 0 440 165" class="w-full max-w-[430px] h-[165px] overflow-visible">
-            <line x1="20" y1="140" x2="420" y2="140" stroke="#475569" stroke-width="2" stroke-dasharray="4 4" />
-            <g id="beam-group" transform="rotate(-5, 295, 108)">
-              <line id="effort-arm" x1="55" y1="108" x2="295" y2="108" stroke="#3b82f6" stroke-width="6" stroke-linecap="round" />
-              <line id="load-arm" x1="295" y1="108" x2="390" y2="108" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" />
-              <g transform="translate(55, 108)">
-                <line x1="0" y1="-52" x2="0" y2="-10" stroke="#3b82f6" stroke-width="3" />
-                <polygon points="-6,-14 6,-14 0,-2" fill="#3b82f6" />
-                <rect x="-48" y="-76" width="96" height="22" rx="4" fill="#3b82f6" />
-                <text x="0" y="-61" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="600">Effort / Margin</text>
-              </g>
-              <g transform="translate(390, 108)">
-                <rect x="-40" y="-50" width="80" height="44" rx="6" fill="#f59e0b" />
-                <text x="0" y="-31" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="700">LOAD</text>
-                <text id="svg-load-value" x="0" y="-15" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="600">5x Output</text>
-                <line x1="0" y1="-54" x2="0" y2="-70" stroke="#10b981" stroke-width="3" />
-                <polygon points="-6,-66 6,-66 0,-76" fill="#10b981" />
-              </g>
-            </g>
-            <g id="fulcrum-group" transform="translate(295, 108)">
-              <polygon points="0,0 -20,32 20,32" fill="#8b5cf6" />
-              <text x="0" y="48" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="600">Fulcrum (Multiplier)</text>
-            </g>
-          </svg>
-
-          <div class="w-full flex items-center gap-3 px-2 pt-2">
-            <span class="text-xs font-medium text-slate-400 whitespace-nowrap">Leverage Ratio:</span>
-            <input id="ratio-slider" type="range" min="1" max="10" step="1" value="5" oninput="updateLever()" class="w-full accent-indigo-500 cursor-pointer" />
-            <span id="ratio-badge" class="px-2.5 py-1 text-xs font-bold rounded bg-slate-800 text-indigo-300 whitespace-nowrap">5x (5:1)</span>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <!-- Input Fields -->
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block text-[11px] font-mono font-semibold uppercase text-amber-700 mb-1">1. How long? (Step 1)</label>
+            <input id="inp-time" type="text" value="12 months" oninput="updateCustomPitch()" class="w-full px-3 py-2 rounded-xl bg-white border border-blush-200 text-xs text-stone-800 shadow-sm focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/15" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-mono font-semibold uppercase text-amber-700 mb-1">2. What changed in your industry? (Step 1)</label>
+            <input id="inp-shift" type="text" value="customer support has shifted toward instant 24/7 digital self-service" oninput="updateCustomPitch()" class="w-full px-3 py-2 rounded-xl bg-white border border-blush-200 text-xs text-stone-800 shadow-sm focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/15" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-mono font-semibold uppercase text-rose-700 mb-1">3. What is the old habit? (Step 2)</label>
+            <input id="inp-legacy" type="text" value="manual email tickets and slow phone queues" oninput="updateCustomPitch()" class="w-full px-3 py-2 rounded-xl bg-white border border-blush-200 text-xs text-stone-800 shadow-sm focus:outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/15" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-mono font-semibold uppercase text-rose-700 mb-1">4. What problem does that cause? (Step 2)</label>
+            <input id="inp-cost" type="text" value="long customer wait times and a 20% drop in repeat sales" oninput="updateCustomPitch()" class="w-full px-3 py-2 rounded-xl bg-white border border-blush-200 text-xs text-stone-800 shadow-sm focus:outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/15" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-mono font-semibold uppercase text-emerald-700 mb-1">5. What is your solution/idea? (Step 3)</label>
+            <input id="inp-sol" type="text" value="our new smart help-center workflow" oninput="updateCustomPitch()" class="w-full px-3 py-2 rounded-xl bg-white border border-blush-200 text-xs text-stone-800 shadow-sm focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/15" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-mono font-semibold uppercase text-emerald-700 mb-1">6. Give 1 result with a number (Step 3)</label>
+            <input id="inp-anchor" type="text" value="a 50% faster reply time and 10 hours saved per week for our team" oninput="updateCustomPitch()" class="w-full px-3 py-2 rounded-xl bg-white border border-blush-200 text-xs text-stone-800 shadow-sm focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/15" />
           </div>
         </div>
 
-        <div class="md:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div class="p-3.5 rounded-xl border border-slate-800 bg-slate-950/70 space-y-2 text-xs">
-            <div class="font-bold text-blue-400 border-b border-slate-800 pb-1.5">⚙️ 1. In Physics (The Machine)</div>
-            <p><strong class="text-slate-200">Effort (Input):</strong> <span id="phys-effort" class="text-slate-400">100 N force</span></p>
-            <p><strong class="text-slate-200">Fulcrum:</strong> <span class="text-slate-400">Pivot point</span></p>
-            <p><strong class="text-slate-200">Mechanical Advantage:</strong> <span id="phys-adv" class="text-slate-400">5x arm ratio</span></p>
-            <p><strong class="text-slate-200">Load (Output):</strong> <span id="phys-load" class="font-semibold text-amber-400">500 N lifted</span></p>
+        <!-- Live Generated Preview -->
+        <div class="lg:col-span-5 rounded-2xl p-5 bg-gradient-to-br from-emerald-50/80 via-white to-amber-50/60 border border-emerald-200 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-emerald-700 flex items-center gap-1.5">
+              <i data-lucide="mic" class="w-4 h-4"></i>
+              <span>Your Ready-to-Speak Pitch</span>
+            </span>
+            <span class="text-[11px] text-stone-500 font-medium">~20 seconds</span>
           </div>
 
-          <div class="p-3.5 rounded-xl border border-slate-800 bg-slate-950/70 space-y-2 text-xs">
-            <div class="font-bold text-emerald-400 border-b border-slate-800 pb-1.5">📈 2. In Trading & Business</div>
-            <p><strong class="text-slate-200">Margin / Equity:</strong> <span id="trad-margin" class="text-slate-400">$1,000 your cash</span></p>
-            <p><strong class="text-slate-200">Financial Fulcrum:</strong> <span id="trad-debt" class="text-slate-400">$4,000 borrowed</span></p>
-            <p><strong class="text-slate-200">Leverage Ratio:</strong> <span id="trad-lev" class="text-slate-400">5:1 (5x)</span></p>
-            <p><strong class="text-slate-200">Market Exposure:</strong> <span id="trad-pos" class="font-semibold text-amber-400">$5,000 position</span></p>
+          <blockquote id="custom-pitch-output" class="text-xs sm:text-sm leading-relaxed text-stone-800 bg-white p-4 rounded-xl border border-emerald-200 font-medium shadow-sm">
+            <!-- Populated by JS -->
+          </blockquote>
+
+          <div class="flex flex-wrap items-center gap-2 pt-1">
+            <button onclick="speakText(document.getElementById('custom-pitch-output').innerText)" class="flex-1 px-3 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition shadow-md shadow-emerald-600/20">
+              <i data-lucide="volume-2" class="w-4 h-4"></i>
+              <span>Listen & Practice Speaking</span>
+            </button>
+            <button onclick="copyCustomPitch()" class="px-3.5 py-2.5 rounded-xl bg-white hover:bg-blush-50 border border-blush-200 text-stone-700 text-xs font-semibold flex items-center gap-1.5 shadow-sm transition">
+              <i data-lucide="clipboard-check" class="w-4 h-4 text-emerald-600"></i>
+              <span id="copy-custom-btn">Copy Text</span>
+            </button>
           </div>
         </div>
       </div>
     </section>
-  </div>
 
+    <!-- SECTION 4: VOCABULARY SPOTLIGHT — LEVERAGE (PHYSICS vs TRADING & BUSINESS) -->
+    <section id="leverage-lab" class="glass-card rounded-3xl p-6 sm:p-8 space-y-8">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-blush-200/80 pb-5">
+        <div>
+          <span class="text-xs font-mono font-semibold uppercase tracking-widest text-indigo-600">Part 2 • Word Spotlight: "Leverage"</span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-900 mt-1">What Does "Leverage" Actually Mean?</h2>
+          <p class="text-xs sm:text-sm text-stone-600 mt-1 leading-relaxed">
+            The word <strong class="text-stone-800">leverage</strong> comes from a <strong class="text-stone-800">lever</strong> (a long bar balanced on a point to lift something heavy). In both physics and money, <strong class="text-stone-800">leverage</strong> means <strong class="text-indigo-700">using a small effort to control something much bigger</strong>.
+          </p>
+        </div>
+
+        <div class="px-4 py-3 rounded-2xl bg-indigo-50/80 border border-indigo-200 border-l-4 border-l-indigo-500 max-w-md shadow-sm shrink-0">
+          <div class="text-[11px] font-semibold text-indigo-800 flex items-center gap-1.5">
+            <i data-lucide="message-square-quote" class="w-3.5 h-3.5 text-indigo-600"></i>
+            <span>Everyday Business Verb ("to leverage" = to use smartly):</span>
+          </div>
+          <p class="text-xs text-stone-700 italic mt-1">
+            "We can <strong class="text-indigo-900">leverage</strong> (= use) our current customer list to launch the new product quickly."
+          </p>
+        </div>
+      </div>
+
+      <!-- Interactive Controls Bar -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 glass-subcard p-5 rounded-2xl bg-blush-50/40">
+        <!-- Slider 1: Leverage Ratio -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between items-center text-xs">
+            <span class="font-semibold text-stone-700 flex items-center gap-1.5">
+              <i data-lucide="sliders" class="w-3.5 h-3.5 text-indigo-600"></i>
+              <span>1. Leverage Multiplier:</span>
+            </span>
+            <span id="ratio-badge" class="px-2.5 py-0.5 font-mono font-bold rounded-md bg-indigo-50 text-indigo-700 border border-indigo-200">5x (5:1)</span>
+          </div>
+          <input id="ratio-slider" type="range" min="1" max="20" step="1" value="5" oninput="updateLever()" class="w-full cursor-pointer" />
+          <div class="flex justify-between text-[10px] font-mono text-stone-500">
+            <span>1x (No Leverage)</span>
+            <span>5x</span>
+            <span>10x</span>
+            <span>20x (High Risk)</span>
+          </div>
+        </div>
+
+        <!-- Slider 2: Initial Capital / Effort -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between items-center text-xs">
+            <span class="font-semibold text-stone-700 flex items-center gap-1.5">
+              <i data-lucide="wallet" class="w-3.5 h-3.5 text-blue-600"></i>
+              <span>2. Your Own Money (Margin):</span>
+            </span>
+            <span id="capital-badge" class="px-2.5 py-0.5 font-mono font-bold rounded-md bg-blue-50 text-blue-700 border border-blue-200">$1,000</span>
+          </div>
+          <input id="capital-slider" type="range" min="500" max="10000" step="500" value="1000" oninput="updateLever()" class="w-full cursor-pointer" />
+          <div class="flex justify-between text-[10px] font-mono text-stone-500">
+            <span>$500</span>
+            <span>$2,500</span>
+            <span>$5,000</span>
+            <span>$10,000</span>
+          </div>
+        </div>
+
+        <!-- Slider 3: Market Move Simulation -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between items-center text-xs">
+            <span class="font-semibold text-stone-700 flex items-center gap-1.5">
+              <i data-lucide="trending-up" class="w-3.5 h-3.5 text-emerald-600"></i>
+              <span>3. Market Price Change:</span>
+            </span>
+            <span id="move-badge" class="px-2.5 py-0.5 font-mono font-bold rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200">+10%</span>
+          </div>
+          <input id="move-slider" type="range" min="-20" max="20" step="1" value="10" oninput="updateLever()" class="w-full cursor-pointer" />
+          <div class="flex justify-between text-[10px] font-mono text-stone-500">
+            <span>-20% (Price Drops)</span>
+            <span>0%</span>
+            <span>+10%</span>
+            <span>+20% (Price Rises)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dual Visualizers: Left = Physics SVG + Cards | Right = Chart.js P&L Curve -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+
+        <!-- Left Column: Mechanical Lever SVG + Physics vs Finance Cards -->
+        <div class="lg:col-span-6 flex flex-col justify-between space-y-4">
+          <div class="glass-subcard rounded-2xl p-4 flex flex-col items-center justify-center relative overflow-hidden">
+            <div class="w-full flex items-center justify-between text-xs text-stone-500 mb-1">
+              <span class="font-mono font-semibold uppercase text-[11px] text-stone-600">Picture: How a Lever Multiplies Your Power</span>
+              <span id="lever-status-pill" class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Balanced Multiplier (5x)</span>
+            </div>
+
+            <svg id="lever-svg" viewBox="0 0 440 175" class="w-full max-w-[440px] h-[175px] overflow-visible">
+              <!-- Ground Line -->
+              <line x1="20" y1="145" x2="420" y2="145" stroke="#d6c7bc" stroke-width="2" stroke-dasharray="5 5" />
+
+              <!-- Beam Group -->
+              <g id="beam-group" transform="rotate(-5, 275, 112)">
+                <!-- Effort Arm -->
+                <line id="effort-arm" x1="55" y1="112" x2="275" y2="112" stroke="#2563eb" stroke-width="7" stroke-linecap="round" />
+                <!-- Load Arm -->
+                <line id="load-arm" x1="275" y1="112" x2="390" y2="112" stroke="#f59e0b" stroke-width="7" stroke-linecap="round" />
+
+                <!-- Effort / Margin Node -->
+                <g transform="translate(55, 112)">
+                  <line x1="0" y1="-54" x2="0" y2="-10" stroke="#2563eb" stroke-width="3" />
+                  <polygon points="-6,-14 6,-14 0,-2" fill="#2563eb" />
+                  <rect x="-56" y="-80" width="112" height="24" rx="6" fill="#2563eb" stroke="#1d4ed8" stroke-width="1" />
+                  <text id="svg-effort-label" x="0" y="-64" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="600">Your Cash: $1,000</text>
+                </g>
+
+                <!-- Load / Exposure Node -->
+                <g transform="translate(390, 112)">
+                  <rect id="svg-load-box" x="-48" y="-54" width="96" height="46" rx="8" fill="#d97706" stroke="#b45309" stroke-width="1.5" />
+                  <text x="0" y="-34" text-anchor="middle" fill="#ffffff" font-size="9.5" font-weight="700" letter-spacing="0.04em">TOTAL TRADE</text>
+                  <text id="svg-load-value" x="0" y="-17" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="700">$5,000</text>
+                  <line x1="0" y1="-58" x2="0" y2="-75" stroke="#059669" stroke-width="3" />
+                  <polygon points="-6,-71 6,-71 0,-81" fill="#059669" />
+                </g>
+              </g>
+
+              <!-- Fulcrum Triangle -->
+              <g id="fulcrum-group" transform="translate(275, 112)">
+                <polygon points="0,0 -22,33 22,33" fill="#4f46e5" stroke="#3730a3" stroke-width="1.5" />
+                <text id="svg-fulcrum-text" x="0" y="50" text-anchor="middle" fill="#2d232e" font-size="11" font-weight="600">Borrowed: $4,000 (5x)</text>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Dual Comparison Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div class="glass-subcard p-4 rounded-2xl space-y-2 text-xs">
+              <div class="font-display font-bold text-blue-700 border-b border-blush-200/70 pb-2 flex items-center gap-1.5">
+                <i data-lucide="cog" class="w-4 h-4 text-blue-600"></i>
+                <span>1. In Physics (Lifting a Rock)</span>
+              </div>
+              <div class="flex justify-between"><span class="text-stone-500">Your Push (Effort):</span> <strong id="phys-effort" class="text-stone-800 font-mono">100 kg</strong></div>
+              <div class="flex justify-between"><span class="text-stone-500">Pivot Point (Fulcrum):</span> <span class="text-stone-700 font-medium">The Triangle</span></div>
+              <div class="flex justify-between"><span class="text-stone-500">Bar Multiplier:</span> <strong id="phys-adv" class="text-indigo-700 font-mono">5x longer bar</strong></div>
+              <div class="flex justify-between pt-1 border-t border-blush-200/70"><span class="text-stone-700 font-semibold">Heavy Rock Lifted:</span> <strong id="phys-load" class="text-amber-600 font-mono text-sm">500 kg</strong></div>
+            </div>
+
+            <div class="glass-subcard p-4 rounded-2xl space-y-2 text-xs">
+              <div class="font-display font-bold text-emerald-700 border-b border-blush-200/70 pb-2 flex items-center gap-1.5">
+                <i data-lucide="candlestick-chart" class="w-4 h-4 text-emerald-600"></i>
+                <span>2. In Trading (Multiplying Money)</span>
+              </div>
+              <div class="flex justify-between"><span class="text-stone-500">Your Cash (Margin):</span> <strong id="trad-margin" class="text-stone-800 font-mono">$1,000</strong></div>
+              <div class="flex justify-between"><span class="text-stone-500">Borrowed Money:</span> <strong id="trad-debt" class="text-indigo-700 font-mono">$4,000</strong></div>
+              <div class="flex justify-between"><span class="text-stone-500">Total Trade Size:</span> <strong id="trad-pos" class="text-amber-600 font-mono">$5,000</strong></div>
+              <div class="flex justify-between pt-1 border-t border-blush-200/70">
+                <span class="text-stone-700 font-semibold">Your Profit or Loss:</span>
+                <strong id="trad-pnl" class="text-emerald-600 font-mono text-sm">+$500 (+50%)</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Chart.js Live P&L & Liquidation Curve -->
+        <div class="lg:col-span-6 glass-subcard rounded-2xl p-5 flex flex-col justify-between">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <div>
+              <h3 class="font-display font-bold text-sm text-stone-900 flex items-center gap-1.5">
+                <i data-lucide="line-chart" class="w-4 h-4 text-indigo-600"></i>
+                <span>How Leverage Multiplies Both Profits AND Losses</span>
+              </h3>
+              <p class="text-[11px] text-stone-600 mt-0.5">
+                With leverage, your profits grow faster, <strong class="text-stone-800">but your losses also grow faster</strong>: <span id="liquidation-note" class="text-rose-600 font-semibold">At 5x leverage, a -20.0% price drop wipes out 100% of your cash!</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="relative h-[240px] w-full">
+            <canvas id="leverageChart"></canvas>
+          </div>
+
+          <!-- Risk / Liquidation Callout Footer -->
+          <div id="liquidation-banner" class="mt-3 p-3.5 rounded-xl bg-amber-50/90 border border-amber-200 text-xs flex items-start gap-2.5">
+            <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
+            <div class="text-stone-700 leading-relaxed">
+              <strong class="text-stone-900">What is "Liquidation" (or a Margin Call)?</strong> At <span id="banner-ratio" class="font-mono font-bold text-indigo-700">5x</span> leverage, if the market price drops by <span id="banner-drop" class="font-mono font-bold text-rose-600">-20.0%</span>, you lose 100% of your own money. The broker automatically closes your trade so you don't lose their borrowed money.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: EXECUTIVE LEXICON & SELF-CHECK QUIZ -->
+    <section id="glossary" class="glass-card rounded-3xl p-6 sm:p-8 space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-blush-200/80 pb-5">
+        <div>
+          <span class="text-xs font-mono font-semibold uppercase tracking-widest text-emerald-600">Part 3 • Easy Vocabulary Guide & Quick Quiz</span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-900 mt-1">12 Key Business Words (Explained Simply)</h2>
+          <p class="text-xs sm:text-sm text-stone-600 mt-1">
+            Each card shows the <strong>simple meaning</strong>, how to upgrade your everyday English, and an audio button so you can hear how it sounds.
+          </p>
+        </div>
+
+        <!-- Search & Category Filter -->
+        <div class="flex flex-wrap items-center gap-2">
+          <div class="relative">
+            <i data-lucide="search" class="w-3.5 h-3.5 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+            <input id="vocab-search" type="text" placeholder="Search words..." oninput="renderVocab()" class="pl-8 pr-3 py-1.5 rounded-xl bg-white border border-blush-200 text-xs text-stone-800 shadow-sm focus:outline-none focus:border-emerald-500" />
+          </div>
+          <select id="vocab-filter" onchange="renderVocab()" class="px-3 py-1.5 rounded-xl bg-white border border-blush-200 text-xs text-stone-700 shadow-sm focus:outline-none focus:border-emerald-500">
+            <option value="all">All 12 Words</option>
+            <option value="pitch">Pitching Ideas</option>
+            <option value="ops">Work & Problems</option>
+            <option value="finance">Finance & Leverage</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Dynamic Vocab Cards Grid -->
+      <div id="vocab-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Interactive Mini-Quiz -->
+      <div class="mt-8 pt-6 border-t border-blush-200/80 no-print">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h3 class="font-serif text-xl font-bold text-stone-900 flex items-center gap-2">
+              <i data-lucide="award" class="w-5 h-5 text-amber-500"></i>
+              <span>Quick 3-Question Practice Quiz</span>
+            </h3>
+            <p class="text-xs text-stone-600">Test your understanding of today's lesson! Click an answer on each card.</p>
+          </div>
+          <span id="quiz-score-badge" class="px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-mono font-semibold text-emerald-800">Score: 0 / 3</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="quiz-container">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center text-xs text-stone-500 py-6 border-t border-blush-200/70">
+      <p>Prepared for Inga's Business English Coaching on Preply • Click any speaker icon to practice pronunciation</p>
+    </footer>
+
+  </main>
+
+  <!-- APPLICATION LOGIC -->
   <script>
+    // ---------------------------------------------------------
+    // 0. VOICE SPEED & LIGHT PALETTE SWITCHER
+    // ---------------------------------------------------------
+    let currentSpeechRate = 0.82; // Default learner-friendly slower speed
+
+    function setSpeechRate(rate) {
+      currentSpeechRate = rate;
+      const slowBtn = document.getElementById('rate-slow');
+      const normBtn = document.getElementById('rate-normal');
+      if (rate < 0.9) {
+        slowBtn.className = 'px-2 py-0.5 rounded-lg bg-emerald-600 text-white font-semibold transition';
+        normBtn.className = 'px-2 py-0.5 rounded-lg text-stone-600 hover:bg-stone-100 transition';
+      } else {
+        normBtn.className = 'px-2 py-0.5 rounded-lg bg-emerald-600 text-white font-semibold transition';
+        slowBtn.className = 'px-2 py-0.5 rounded-lg text-stone-600 hover:bg-stone-100 transition';
+      }
+    }
+
+    function setPalette(name) {
+      document.body.setAttribute('data-palette', name);
+      ['ivory', 'daylight', 'sky'].forEach(key => {
+        const btn = document.getElementById(`pal-${key}`);
+        if (!btn) return;
+        if (key === name) {
+          btn.className = 'px-2.5 py-1 rounded-lg bg-blush-100 text-blush-700 font-semibold transition flex items-center gap-1';
+        } else {
+          btn.className = 'px-2.5 py-1 rounded-lg text-stone-600 hover:text-stone-900 transition flex items-center gap-1';
+        }
+      });
+    }
+
+    // ---------------------------------------------------------
+    // 1. SCENARIO DATA FOR THE 3-STEP PITCH FRAMEWORK
+    // ---------------------------------------------------------
+    const pitchScenarios = {
+      template: {
+        badQuote: '"Hi everyone, today I want to show you 30 slides about our company history and software details so you can approve our budget."',
+        badReason: '<strong>Why it fails:</strong> It sounds boring, takes too much mental energy, and asks for money too early = <strong>The listener stops paying attention.</strong>',
+        step1: '"Over the past <strong class="text-amber-700">[6–18 months]</strong>, the market and <span class="vocab-highlight text-amber-800 bg-amber-50" data-tippy-content="<strong>Operational landscape:</strong> The everyday reality of how businesses work right now.">operational landscape</span> in <strong class="text-amber-700">[industry]</strong> has undergone a major <span class="vocab-highlight text-amber-800 bg-amber-50" data-tippy-content="<strong>Macro shift:</strong> A big change happening across the whole industry or world.">macro shift</span>..."',
+        step2: '"Yet, most organizations are still relying on <span class="vocab-highlight text-rose-800 bg-rose-50" data-tippy-content="<strong>Legacy approaches:</strong> Old ways of working or old tools that companies keep using out of habit.">legacy approaches</span>, leading to severe <span class="vocab-highlight text-rose-800 bg-rose-50" data-tippy-content="<strong>Bottleneck:</strong> Like the narrow neck of a bottle—one slow step that slows down everything else.">bottlenecks</span> and <strong class="text-rose-700">[cost / lost time]</strong>..."',
+        step3: '"Our objective today is to explore how <strong class="text-emerald-700">[our solution]</strong> eliminates this <span class="vocab-highlight text-emerald-800 bg-emerald-50" data-tippy-content="<strong>Friction:</strong> Anything that makes work slower, harder, or more frustrating than it should be.">friction</span> and delivers <span class="vocab-highlight text-emerald-800 bg-emerald-50" data-tippy-content="<strong>Quantified outcome:</strong> A clear result with a real number (like %, $, or hours saved).">[1 clear result with a number]</span>."'
+      },
+      dog: {
+        badQuote: '"Hey boss, can we bring our dogs to work on Fridays? My dog gets lonely at home and everyone loves dogs!"',
+        badReason: '<strong>Why it fails:</strong> The boss\'s Crocodile Brain only hears <strong>mess, noise, and risk</strong> with zero benefit for the company &rarr; <strong>Instant "No."</strong>',
+        step1: '"Over the past <strong class="text-amber-700">12 months</strong>, the <span class="vocab-highlight text-amber-800 bg-amber-50" data-tippy-content="<strong>Operational landscape:</strong> The everyday reality of how offices work today.">operational landscape</span> in <strong class="text-amber-700">hybrid offices</strong> has shifted—companies are working hard to make Fridays in the office fun and positive..."',
+        step2: '"Yet, most offices are still relying on <span class="vocab-highlight text-rose-800 bg-rose-50" data-tippy-content="<strong>Legacy approaches:</strong> Old strict rules forcing people to come in.">legacy attendance rules</span>, leading to <strong class="text-rose-700">Friday tiredness, empty desks, and a bottleneck in team morale</strong>..."',
+        step3: '"Our objective today is to explore how <strong class="text-emerald-700">a \'Bring Your Dog Friday\' test month</strong> eliminates end-of-week <span class="vocab-highlight text-emerald-800 bg-emerald-50" data-tippy-content="<strong>Friction:</strong> People feeling tired or unhappy about coming in on Fridays.">friction</span> and delivers <strong class="text-emerald-700">30% higher Friday office attendance at $0 cost to the company</strong>."'
+      },
+      ai: {
+        badQuote: '"We built a complex AI delivery software with 14 technical features. Would you like to sign a 2-year contract today?"',
+        badReason: '<strong>Why it fails:</strong> Too much technical jargon makes the brain tired, and asking for a contract right away makes the listener say "No."',
+        step1: '"Over the past <strong class="text-amber-700">12 months</strong>, the <span class="vocab-highlight text-amber-800 bg-amber-50" data-tippy-content="<strong>Operational landscape:</strong> The everyday reality of how businesses work right now.">operational landscape</span> in <strong class="text-amber-700">shipping and delivery</strong> has shifted rapidly toward live AI route planning..."',
+        step2: '"Yet, most delivery companies are still relying on <span class="vocab-highlight text-rose-800 bg-rose-50" data-tippy-content="<strong>Legacy approaches:</strong> Old manual spreadsheets instead of modern tools.">legacy spreadsheet tracking</span>, leading to <strong class="text-rose-700">18% wasted fuel and daily delivery bottlenecks</strong>..."',
+        step3: '"Our objective today is to explore how <strong class="text-emerald-700">our smart routing tool</strong> eliminates this <span class="vocab-highlight text-emerald-800 bg-emerald-50" data-tippy-content="<strong>Friction:</strong> Delays and extra manual work.">friction</span> and delivers <strong class="text-emerald-700">$240,000 in annual fuel savings</strong>."'
+      },
+      fintech: {
+        badQuote: '"Our finance software has a new dashboard for international payments. Can we book a 90-minute technical meeting?"',
+        badReason: '<strong>Why it fails:</strong> Nobody wants a 90-minute technical meeting unless they first understand what problem it solves!',
+        step1: '"Over the past <strong class="text-amber-700">18 months</strong>, fast-changing interest rates have created a major <span class="vocab-highlight text-amber-800 bg-amber-50" data-tippy-content="<strong>Macro shift:</strong> A big change across the whole market.">macro shift</span> in how <strong class="text-amber-700">global companies manage international payments</strong>..."',
+        step2: '"Yet, most finance teams are still relying on <span class="vocab-highlight text-rose-800 bg-rose-50" data-tippy-content="<strong>Legacy approaches:</strong> Slow, old-fashioned bank transfers done by hand.">legacy manual bank transfers</span>, leading to <strong class="text-rose-700">slow payments and high currency exchange fees</strong>..."',
+        step3: '"Our objective today is to explore how <strong class="text-emerald-700">our automated payment platform</strong> removes this <span class="vocab-highlight text-emerald-800 bg-emerald-50" data-tippy-content="<strong>Friction:</strong> Slow steps and hidden fees.">friction</span> and saves <strong class="text-emerald-700">$150,000 in bank fees every year</strong>."'
+      }
+    };
+
     function setExample(mode) {
-      ['template', 'dog', 'ai'].forEach(m => {
-        const btn = document.getElementById('ex-' + m);
-        btn.className = (m === mode)
-          ? 'px-3 py-1.5 text-xs font-medium rounded-md bg-emerald-600 text-white'
-          : 'px-3 py-1.5 text-xs font-medium rounded-md text-slate-300 hover:text-white';
+      const data = pitchScenarios[mode] || pitchScenarios.template;
+
+      // Update buttons
+      ['template', 'dog', 'ai', 'fintech'].forEach(key => {
+        const btn = document.getElementById(`btn-${key}`);
+        if (!btn) return;
+        if (key === mode) {
+          btn.className = 'scenario-btn px-3 py-2 text-xs font-semibold rounded-xl transition flex items-center gap-1.5 bg-emerald-600 text-white shadow-sm';
+        } else {
+          btn.className = 'scenario-btn px-3 py-2 text-xs font-semibold rounded-xl transition flex items-center gap-1.5 text-stone-700 hover:text-stone-900 hover:bg-white';
+        }
       });
 
-      if (mode === 'template') {
-        document.getElementById('step1-quote').innerHTML = '"Over the past <strong class="text-amber-400">[6-18 months]</strong>, the market / operational landscape in <strong class="text-amber-400">[industry]</strong> has shifted..."';
-        document.getElementById('step2-quote').innerHTML = '"Yet, most organizations are still relying on <strong class="text-rose-400">legacy approaches</strong>, leading to <strong class="text-rose-400">[cost / bottleneck]</strong>..."';
-        document.getElementById('step3-quote').innerHTML = '"Our objective today is to explore how <strong class="text-emerald-400">[our solution]</strong> eliminates this friction and delivers <strong class="text-emerald-400">[specific, quantified outcome]</strong>."';
-      } else if (mode === 'dog') {
-        document.getElementById('step1-quote').innerHTML = '"Over the past <strong class="text-amber-400">12 months</strong>, the <strong class="text-amber-400">operational landscape in hybrid workplaces</strong> has shifted toward making in-office days high-energy and collaborative..."';
-        document.getElementById('step2-quote').innerHTML = '"Yet, most offices are still relying on <strong class="text-rose-400">legacy approaches</strong> like strict Friday mandates, leading to <strong class="text-rose-400">end-of-week burnout, empty desks, and a bottleneck in team morale</strong>..."';
-        document.getElementById('step3-quote').innerHTML = '"Our objective today is to explore how a <strong class="text-emerald-400">structured \'Bring Your Dog to Work Friday\' pilot</strong> eliminates this friction and delivers <strong class="text-emerald-400">a 30% boost in Friday attendance at $0 cost</strong>."';
-      } else {
-        document.getElementById('step1-quote').innerHTML = '"Over the past <strong class="text-amber-400">12 months</strong>, the operational landscape in <strong class="text-amber-400">global logistics</strong> has shifted toward real-time AI routing..."';
-        document.getElementById('step2-quote').innerHTML = '"Yet, most organizations are still relying on <strong class="text-rose-400">legacy spreadsheet tracking</strong>, leading to <strong class="text-rose-400">18% wasted fuel costs and delivery bottlenecks</strong>..."';
-        document.getElementById('step3-quote').innerHTML = '"Our objective today is to explore how <strong class="text-emerald-400">our automated dispatch platform</strong> eliminates this friction and delivers <strong class="text-emerald-400">a $240k annual reduction in fleet delays</strong>."';
-      }
+      // Animate and swap content
+      gsap.fromTo('.step-card', 
+        { y: 6, opacity: 0.4 }, 
+        { y: 0, opacity: 1, duration: 0.35, stagger: 0.06, ease: 'power2.out' }
+      );
+
+      document.getElementById('bad-pitch-quote').innerHTML = data.badQuote;
+      document.getElementById('bad-pitch-reason').innerHTML = data.badReason;
+      document.getElementById('step1-quote').innerHTML = data.step1;
+      document.getElementById('step2-quote').innerHTML = data.step2;
+      document.getElementById('step3-quote').innerHTML = data.step3;
+
+      initTooltips();
+    }
+
+    // ---------------------------------------------------------
+    // 2. CUSTOM PITCH BUILDER STUDIO
+    // ---------------------------------------------------------
+    function updateCustomPitch() {
+      const time = document.getElementById('inp-time').value.trim() || '[timeframe]';
+      const shift = document.getElementById('inp-shift').value.trim() || '[industry change]';
+      const legacy = document.getElementById('inp-legacy').value.trim() || '[old habit]';
+      const cost = document.getElementById('inp-cost').value.trim() || '[problem / cost]';
+      const sol = document.getElementById('inp-sol').value.trim() || '[our solution]';
+      const anchor = document.getElementById('inp-anchor').value.trim() || '[1 clear number result]';
+
+      const html = `
+        "Over the past <span class="text-amber-800 bg-amber-50 border border-amber-200/60 px-1.5 py-0.5 rounded font-semibold">${time}</span>, the operational landscape in <span class="text-amber-800 bg-amber-50 border border-amber-200/60 px-1.5 py-0.5 rounded font-semibold">${shift}</span>.
+        <br/><br/>
+        Yet, most organizations are still relying on <span class="text-rose-800 bg-rose-50 border border-rose-200/60 px-1.5 py-0.5 rounded font-semibold">${legacy}</span>, leading to <span class="text-rose-800 bg-rose-50 border border-rose-200/60 px-1.5 py-0.5 rounded font-semibold">${cost}</span>.
+        <br/><br/>
+        Our objective today is to explore how <span class="text-emerald-800 bg-emerald-50 border border-emerald-200/60 px-1.5 py-0.5 rounded font-semibold">${sol}</span> eliminates this friction and delivers <span class="text-emerald-800 bg-emerald-50 border border-emerald-200/60 px-1.5 py-0.5 rounded font-semibold">${anchor}</span>."
+      `;
+      document.getElementById('custom-pitch-output').innerHTML = html;
+    }
+
+    function resetCustomBuilder() {
+      document.getElementById('inp-time').value = '12 months';
+      document.getElementById('inp-shift').value = 'customer support has shifted toward instant 24/7 digital self-service';
+      document.getElementById('inp-legacy').value = 'manual email tickets and slow phone queues';
+      document.getElementById('inp-cost').value = 'long customer wait times and a 20% drop in repeat sales';
+      document.getElementById('inp-sol').value = 'our new smart help-center workflow';
+      document.getElementById('inp-anchor').value = 'a 50% faster reply time and 10 hours saved per week for our team';
+      updateCustomPitch();
+    }
+
+    function copyActivePitch() {
+      const s1 = document.getElementById('step1-quote').innerText.replace(/^"|"$/g, '');
+      const s2 = document.getElementById('step2-quote').innerText.replace(/^"|"$/g, '');
+      const s3 = document.getElementById('step3-quote').innerText.replace(/^"|"$/g, '');
+      navigator.clipboard.writeText(`${s1} ${s2} ${s3}`);
+      const lbl = document.getElementById('copy-pitch-label');
+      lbl.textContent = 'Copied!';
+      setTimeout(() => { lbl.textContent = 'Copy'; }, 1800);
+    }
+
+    function copyCustomPitch() {
+      const text = document.getElementById('custom-pitch-output').innerText.trim();
+      navigator.clipboard.writeText(text);
+      const btn = document.getElementById('copy-custom-btn');
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.textContent = 'Copy Text'; }, 2000);
+    }
+
+    // ---------------------------------------------------------
+    // 3. WEB SPEECH API (PRONUNCIATION & READ-ALOUD)
+    // ---------------------------------------------------------
+    function speakText(text) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const clean = text.replace(/["«»]/g, '');
+      const utter = new SpeechSynthesisUtterance(clean);
+      utter.lang = 'en-US';
+      utter.rate = currentSpeechRate;
+      window.speechSynthesis.speak(utter);
+    }
+
+    function speakStep(stepNum) {
+      const el = document.getElementById(`step${stepNum}-quote`);
+      if (el) speakText(el.innerText);
+    }
+
+    function speakFullPitch() {
+      const s1 = document.getElementById('step1-quote').innerText;
+      const s2 = document.getElementById('step2-quote').innerText;
+      const s3 = document.getElementById('step3-quote').innerText;
+      speakText(`${s1} ${s2} ${s3}`);
+    }
+
+    // ---------------------------------------------------------
+    // 4. LEVERAGE SIMULATOR (GSAP SVG + CHART.JS P&L CURVE)
+    // ---------------------------------------------------------
+    let leverageChartInstance = null;
+
+    function initLeverageChart() {
+      const ctx = document.getElementById('leverageChart').getContext('2d');
+      const moves = [-20, -15, -10, -5, 0, 5, 10, 15, 20];
+
+      leverageChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: moves.map(m => (m > 0 ? `+${m}%` : `${m}%`)),
+          datasets: [
+            {
+              label: 'With Leverage (%)',
+              data: moves.map(m => Math.max(-100, m * 5)),
+              borderColor: '#059669',
+              backgroundColor: 'rgba(16, 185, 129, 0.14)',
+              borderWidth: 3,
+              pointRadius: 4,
+              pointBackgroundColor: '#059669',
+              tension: 0.15,
+              fill: true
+            },
+            {
+              label: 'Without Leverage (1x)',
+              data: moves,
+              borderColor: '#a8a29e',
+              borderDash: [5, 5],
+              borderWidth: 2,
+              pointRadius: 2,
+              tension: 0.1,
+              fill: false
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: {
+              labels: { color: '#44403c', font: { family: 'Plus Jakarta Sans', size: 11, weight: '600' } }
+            },
+            tooltip: {
+              backgroundColor: '#ffffff',
+              borderColor: '#eabdb0',
+              borderWidth: 1,
+              titleColor: '#2d232e',
+              bodyColor: '#44403c',
+              callbacks: {
+                label: function(context) {
+                  const val = context.parsed.y;
+                  if (val <= -100) return `${context.dataset.label}: -100% (All Your Cash Lost / Liquidated)`;
+                  return `${context.dataset.label}: ${val > 0 ? '+' : ''}${val.toFixed(0)}%`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { color: 'rgba(231, 224, 211, 0.7)' },
+              ticks: { color: '#57534e', font: { family: 'JetBrains Mono', size: 10 } },
+              title: { display: true, text: 'If Market Price Changes By (%)', color: '#57534e', font: { size: 11, weight: '600' } }
+            },
+            y: {
+              min: -100,
+              max: 200,
+              grid: { color: 'rgba(231, 224, 211, 0.7)' },
+              ticks: {
+                color: '#57534e',
+                font: { family: 'JetBrains Mono', size: 10 },
+                callback: v => `${v}%`
+              },
+              title: { display: true, text: 'Your Profit or Loss (%)', color: '#57534e', font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      });
     }
 
     function updateLever() {
       const ratio = parseInt(document.getElementById('ratio-slider').value, 10);
+      const margin = parseInt(document.getElementById('capital-slider').value, 10);
+      const marketMove = parseInt(document.getElementById('move-slider').value, 10);
+
+      // Badges
       document.getElementById('ratio-badge').textContent = `${ratio}x (${ratio}:1)`;
-      const fulcrumX = 195 + ((ratio - 1) / 9) * 145;
-      const tilt = -2 - (ratio * 0.45);
-      document.getElementById('fulcrum-group').setAttribute('transform', `translate(${fulcrumX}, 108)`);
-      document.getElementById('beam-group').setAttribute('transform', `rotate(${tilt}, ${fulcrumX}, 108)`);
-      document.getElementById('effort-arm').setAttribute('x2', fulcrumX);
-      document.getElementById('load-arm').setAttribute('x1', fulcrumX);
-      document.getElementById('svg-load-value').textContent = `${ratio}x Output`;
-      document.getElementById('phys-adv').textContent = `${ratio}x arm ratio`;
-      document.getElementById('phys-load').textContent = `${100 * ratio} N lifted`;
-      const margin = 1000;
+      document.getElementById('capital-badge').textContent = `$${margin.toLocaleString()}`;
+      const moveBadge = document.getElementById('move-badge');
+      moveBadge.textContent = `${marketMove > 0 ? '+' : ''}${marketMove}%`;
+      moveBadge.className = marketMove >= 0
+        ? 'px-2.5 py-0.5 font-mono font-bold rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200'
+        : 'px-2.5 py-0.5 font-mono font-bold rounded-md bg-rose-50 text-rose-700 border border-rose-200';
+
+      // Physics & Finance Calculations
       const exposure = margin * ratio;
       const debt = exposure - margin;
-      document.getElementById('trad-debt').textContent = `$${debt.toLocaleString()} borrowed`;
-      document.getElementById('trad-lev').textContent = `${ratio}:1 (${ratio}x)`;
-      document.getElementById('trad-pos').textContent = `$${exposure.toLocaleString()} position`;
+      const rawRoiPct = marketMove * ratio;
+      const isLiquidated = rawRoiPct <= -100;
+      const effectiveRoiPct = Math.max(-100, rawRoiPct);
+      const netPnlDollar = (margin * effectiveRoiPct) / 100;
+      const liqDropPct = (100 / ratio).toFixed(1);
+
+      // Fulcrum & SVG geometry with GSAP smooth transitions
+      const fulcrumX = 185 + ((ratio - 1) / 19) * 165;
+      const tilt = isLiquidated ? 12 : (-1.5 - (ratio * 0.35) - (marketMove * 0.15));
+
+      gsap.to('#fulcrum-group', { attr: { transform: `translate(${fulcrumX}, 112)` }, duration: 0.25 });
+      gsap.to('#beam-group', { attr: { transform: `rotate(${tilt}, ${fulcrumX}, 112)` }, duration: 0.3, ease: 'back.out(1.4)' });
+      document.getElementById('effort-arm').setAttribute('x2', fulcrumX);
+      document.getElementById('load-arm').setAttribute('x1', fulcrumX);
+
+      document.getElementById('svg-effort-label').textContent = `Your Cash: $${margin.toLocaleString()}`;
+      document.getElementById('svg-load-value').textContent = `$${exposure.toLocaleString()}`;
+      document.getElementById('svg-fulcrum-text').textContent = `Borrowed: $${debt.toLocaleString()} (${ratio}x)`;
+
+      // Status Pill
+      const statusPill = document.getElementById('lever-status-pill');
+      const loadBox = document.getElementById('svg-load-box');
+      if (isLiquidated) {
+        statusPill.textContent = '⚠️ ALL CASH LOST: LIQUIDATED (-100%)';
+        statusPill.className = 'px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-rose-100 text-rose-800 border border-rose-300 animate-pulse';
+        loadBox.setAttribute('fill', '#e11d48');
+      } else if (ratio >= 10) {
+        statusPill.textContent = `High Risk Multiplier (${ratio}x)`;
+        statusPill.className = 'px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-100 text-amber-800 border border-amber-300';
+        loadBox.setAttribute('fill', '#d97706');
+      } else {
+        statusPill.textContent = `Balanced Multiplier (${ratio}x)`;
+        statusPill.className = 'px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200';
+        loadBox.setAttribute('fill', '#d97706');
+      }
+
+      // Update Physics & Finance text
+      const effortKg = Math.round(margin / 10);
+      document.getElementById('phys-effort').textContent = `${effortKg.toLocaleString()} kg`;
+      document.getElementById('phys-adv').textContent = `${ratio}x longer bar`;
+      document.getElementById('phys-load').textContent = `${(effortKg * ratio).toLocaleString()} kg`;
+
+      document.getElementById('trad-margin').textContent = `$${margin.toLocaleString()}`;
+      document.getElementById('trad-debt').textContent = `$${debt.toLocaleString()}`;
+      document.getElementById('trad-pos').textContent = `$${exposure.toLocaleString()}`;
+
+      const pnlEl = document.getElementById('trad-pnl');
+      if (isLiquidated) {
+        pnlEl.textContent = `-$${margin.toLocaleString()} (-100% All Lost!)`;
+        pnlEl.className = 'text-rose-600 font-mono text-sm font-bold';
+      } else {
+        const sign = netPnlDollar >= 0 ? '+' : '';
+        pnlEl.textContent = `${sign}$${netPnlDollar.toLocaleString()} (${sign}${effectiveRoiPct}%)`;
+        pnlEl.className = netPnlDollar >= 0 ? 'text-emerald-600 font-mono text-sm font-bold' : 'text-rose-600 font-mono text-sm font-bold';
+      }
+
+      document.getElementById('liquidation-note').textContent =
+        ratio === 1
+          ? 'At 1x (no leverage), you are not borrowing any money, so there is no liquidation risk!'
+          : `At ${ratio}x leverage, a -${liqDropPct}% price drop wipes out 100% of your cash!`;
+      document.getElementById('banner-ratio').textContent = `${ratio}x`;
+      document.getElementById('banner-drop').textContent = `-${liqDropPct}%`;
+
+      // Update Chart.js
+      if (leverageChartInstance) {
+        const moves = [-20, -15, -10, -5, 0, 5, 10, 15, 20];
+        leverageChartInstance.data.datasets[0].label = `With ${ratio}x Leverage (%)`;
+        leverageChartInstance.data.datasets[0].data = moves.map(m => Math.max(-100, m * ratio));
+        leverageChartInstance.options.scales.y.max = Math.max(100, Math.min(400, 20 * ratio));
+        leverageChartInstance.update();
+      }
     }
+
+    // ---------------------------------------------------------
+    // 5. EXECUTIVE GLOSSARY & QUIZ (SIMPLE, LEARNER-FRIENDLY EXPLANATIONS)
+    // ---------------------------------------------------------
+    const vocabList = [
+      {
+        term: 'Macro shift',
+        phonetic: '/ˈmæk.roʊ ʃɪft/',
+        category: 'pitch',
+        badge: 'Pitch Step 1',
+        meaning: 'A big change happening across the whole industry or the whole world (not just inside one small company).',
+        upgrade: 'Everyday: "Things are changing." → Business: "We are seeing a major macro shift."',
+        example: 'Remote work created a major macro shift in how offices are used.'
+      },
+      {
+        term: 'Operational landscape',
+        phonetic: '/ˌɑː.pəˈreɪ.ʃən.əl ˈlænd.skeɪp/',
+        category: 'pitch',
+        badge: 'Pitch Step 1',
+        meaning: 'The everyday reality and environment of how businesses do their work right now.',
+        upgrade: 'Everyday: "How companies work today" → Business: "Today\'s operational landscape"',
+        example: 'New AI tools have changed the operational landscape for customer service teams.'
+      },
+      {
+        term: 'Legacy approaches',
+        phonetic: '/ˈleɡ.ə.si əˈproʊ.tʃɪz/',
+        category: 'ops',
+        badge: 'Pitch Step 2',
+        meaning: 'Old habits, old methods, or old software that companies still use even though better ways exist.',
+        upgrade: 'Polite tip: Blame "legacy approaches" instead of telling someone "you are doing it wrong."',
+        example: 'Relying on legacy approaches like paper forms slows down our whole team.'
+      },
+      {
+        term: 'High-stakes friction',
+        phonetic: '/ˈhaɪ steɪks ˈfrɪk.ʃən/',
+        category: 'ops',
+        badge: 'Pitch Step 2',
+        meaning: 'A frustrating delay or problem in an important process that costs a lot of money or customers.',
+        upgrade: 'Everyday: "A big, expensive problem" → Business: "High-stakes friction"',
+        example: 'Slow checkout pages create high-stakes friction for online shoppers.'
+      },
+      {
+        term: 'Bottleneck',
+        phonetic: '/ˈbɑː.təl.nek/',
+        category: 'ops',
+        badge: 'Work & Problems',
+        meaning: 'Think of the narrow top of a bottle: it is one slow step that blocks the whole process and makes everyone wait.',
+        upgrade: 'Everyday: "The slow part" → Business: "The main bottleneck"',
+        example: 'Waiting for three manager signatures is the biggest bottleneck in our project.'
+      },
+      {
+        term: 'Value anchor',
+        phonetic: '/ˈvæl.juː ˈæŋ.kər/',
+        category: 'pitch',
+        badge: 'Pitch Step 3',
+        meaning: 'One clear, memorable number you share in Step 3 so the listener immediately sees how valuable your idea is.',
+        upgrade: 'Everyday: "It will help a lot" → Business: Give 1 clear number as a Value Anchor.',
+        example: 'Saving 10 hours a week was a strong value anchor in her presentation.'
+      },
+      {
+        term: 'Quantified outcome',
+        phonetic: '/ˈkwɑːn.tə.faɪd ˈaʊt.kʌm/',
+        category: 'pitch',
+        badge: 'Pitch Step 3',
+        meaning: 'A result measured with a real number (like %, $, or hours saved) instead of a vague promise.',
+        upgrade: 'Everyday: "Much faster delivery" → Business: "A quantified outcome of 30% faster delivery."',
+        example: 'Managers love to see a clear, quantified outcome before approving a new idea.'
+      },
+      {
+        term: 'Leverage (Verb & Noun)',
+        phonetic: '/ˈlev.ər.ɪdʒ/',
+        category: 'finance',
+        badge: 'Key Word',
+        meaning: '1) As a verb: To use something you already have in a smart way. 2) In finance: Using borrowed money to control a bigger investment.',
+        upgrade: 'Everyday: "Let\'s use our skills" → Business: "Let\'s leverage our skills"',
+        example: 'We can leverage our social media followers to sell the new course.'
+      },
+      {
+        term: 'Margin (Your Cash)',
+        phonetic: '/ˈmɑːr.dʒɪn/',
+        category: 'finance',
+        badge: 'Trading & Finance',
+        meaning: 'The cash you put in from your own pocket when you open a leveraged trade (like your deposit).',
+        upgrade: 'Easy picture: On a lever, "margin" is your own push/effort.',
+        example: 'With $1,000 in margin at 5x leverage, you can control a $5,000 trade.'
+      },
+      {
+        term: 'Market Exposure',
+        phonetic: '/ˈmɑːr.kɪt ɪkˈspoʊ.ʒər/',
+        category: 'finance',
+        badge: 'Trading & Finance',
+        meaning: 'The total dollar size of your trade in the market (Your Own Cash + Borrowed Money).',
+        upgrade: 'Everyday: "Total trade size" → Finance: "Total market exposure"',
+        example: 'If you put in $1,000 and borrow $4,000, your market exposure is $5,000.'
+      },
+      {
+        term: 'Liquidation / Margin Call',
+        phonetic: '/ˌlɪk.wɪˈdeɪ.ʃən/',
+        category: 'finance',
+        badge: 'Risk Warning',
+        meaning: 'When a leveraged trade drops so much that all of your own cash (margin) is lost, and the broker automatically closes your trade.',
+        upgrade: 'Easy picture: This is when the weight is too heavy and the lever breaks!',
+        example: 'At 10x leverage, a 10% price drop causes full liquidation of your cash.'
+      },
+      {
+        term: 'Loss Aversion',
+        phonetic: '/lɔːs əˈvɜːr.ʒən/',
+        category: 'pitch',
+        badge: 'Psychology',
+        meaning: 'A psychology rule: humans care twice as much about NOT losing money or time as they do about winning something new.',
+        upgrade: 'Why it matters: Step 2 uses loss aversion by showing what old habits are costing right now.',
+        example: 'Because of loss aversion, people act faster when they see they are losing money.'
+      }
+    ];
+
+    function renderVocab() {
+      const query = (document.getElementById('vocab-search').value || '').toLowerCase();
+      const cat = document.getElementById('vocab-filter').value;
+      const grid = document.getElementById('vocab-grid');
+
+      const filtered = vocabList.filter(item => {
+        const matchesCat = cat === 'all' || item.category === cat;
+        const matchesQuery = item.term.toLowerCase().includes(query) || item.meaning.toLowerCase().includes(query);
+        return matchesCat && matchesQuery;
+      });
+
+      grid.innerHTML = filtered.map(item => `
+        <div class="glass-subcard rounded-2xl p-4 flex flex-col justify-between hover:border-emerald-300 hover:shadow-md transition">
+          <div>
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <h4 class="font-display font-bold text-stone-900 text-sm">${item.term}</h4>
+                <span class="text-[11px] font-mono text-stone-500">${item.phonetic}</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="px-2 py-0.5 text-[10px] font-mono font-semibold uppercase rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200">${item.badge}</span>
+                <button onclick="speakText('${item.term.replace(/'/g, "\\'")}. ${item.example.replace(/'/g, "\\'")}')" class="p-1.5 rounded-lg bg-blush-50 hover:bg-emerald-50 text-stone-600 hover:text-emerald-700 border border-blush-200/80 transition" title="Listen to Word & Example">
+                  <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+            <p class="text-xs text-stone-600 mt-2.5 leading-relaxed"><strong class="text-stone-800">Simple meaning:</strong> ${item.meaning}</p>
+          </div>
+          <div class="mt-3 pt-2.5 border-t border-blush-200/70 space-y-1.5 text-[11px]">
+            <p class="text-emerald-800 bg-emerald-50/80 px-2.5 py-1.5 rounded-lg font-medium">${item.upgrade}</p>
+            <p class="text-stone-500 italic">Example: "${item.example}"</p>
+          </div>
+        </div>
+      `).join('');
+
+      lucide.createIcons();
+    }
+
+    // Quiz Data & Logic (Simple, Clear Questions)
+    const quizQuestions = [
+      {
+        q: '1. In Step 2, why do we blame "legacy approaches" (old habits) instead of saying "you are doing this wrong"?',
+        options: [
+          'To use long, difficult words',
+          'So the listener does not feel personally attacked or angry, while still seeing the problem',
+          'To hide the cost of the problem'
+        ],
+        correct: 1,
+        explanation: 'Great job! Blaming "legacy approaches" (old tools/habits) keeps the listener friendly and open to your idea.'
+      },
+      {
+        q: '2. In Step 3 ("Our objective today is to explore how..."), what is a "Value Anchor"?',
+        options: [
+          'A long list of 20 technical details',
+          'One clear result with a number (like "$240k saved" or "30% faster") that makes the logical brain interested',
+          'Asking the boss to sign a contract in 5 seconds'
+        ],
+        correct: 1,
+        explanation: 'Spot on! Saying "explore" feels safe, and giving 1 clear number (Value Anchor) makes them want to hear your plan.'
+      },
+      {
+        q: '3. You invest $1,000 of your own cash with 10x leverage (total trade = $10,000). What happens if the market price drops by -10%?',
+        options: [
+          'You only lose $100',
+          'Your $10,000 trade loses $1,000—which wipes out 100% of your own cash (Liquidation!)',
+          'Nothing happens at all'
+        ],
+        correct: 1,
+        explanation: 'Exactly right! Leverage multiplies profits when prices rise, but it also multiplies losses when prices fall.'
+      }
+    ];
+
+    const quizState = { answered: {}, score: 0 };
+
+    function renderQuiz() {
+      const container = document.getElementById('quiz-container');
+      container.innerHTML = quizQuestions.map((item, idx) => `
+        <div class="glass-subcard rounded-2xl p-4 flex flex-col justify-between space-y-3">
+          <p class="text-xs font-semibold text-stone-900 leading-relaxed">${item.q}</p>
+          <div class="space-y-2">
+            ${item.options.map((opt, oIdx) => {
+              const chosen = quizState.answered[idx];
+              let btnStyle = 'bg-blush-50/50 hover:bg-white border-blush-200 text-stone-700 hover:border-blush-300 shadow-sm';
+              if (chosen !== undefined) {
+                if (oIdx === item.correct) {
+                  btnStyle = 'bg-emerald-50 border-emerald-400 text-emerald-900 font-semibold';
+                } else if (oIdx === chosen) {
+                  btnStyle = 'bg-rose-50 border-rose-300 text-rose-800';
+                }
+              }
+              return `
+                <button onclick="answerQuiz(${idx}, ${oIdx})" ${chosen !== undefined ? 'disabled' : ''} class="w-full text-left p-2.5 rounded-xl border text-xs transition ${btnStyle}">
+                  ${opt}
+                </button>
+              `;
+            }).join('')}
+          </div>
+          <div id="quiz-exp-${idx}" class="text-[11px] ${quizState.answered[idx] !== undefined ? 'block' : 'hidden'} pt-2 border-t border-blush-200 text-emerald-700 font-medium">
+            ${item.explanation}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function answerQuiz(qIdx, oIdx) {
+      if (quizState.answered[qIdx] !== undefined) return;
+      quizState.answered[qIdx] = oIdx;
+      if (oIdx === quizQuestions[qIdx].correct) {
+        quizState.score += 1;
+      }
+      document.getElementById('quiz-score-badge').textContent = `Score: ${quizState.score} / 3`;
+      renderQuiz();
+
+      if (Object.keys(quizState.answered).length === 3 && quizState.score === 3 && typeof confetti === 'function') {
+        confetti({ particleCount: 70, spread: 60, origin: { y: 0.7 } });
+      }
+    }
+
+    // ---------------------------------------------------------
+    // 6. INITIALIZATION
+    // ---------------------------------------------------------
+    function initTooltips() {
+      if (typeof tippy === 'function') {
+        tippy('.vocab-highlight', {
+          allowHTML: true,
+          theme: 'executive',
+          animation: 'shift-away',
+          maxWidth: 280,
+        });
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      initTooltips();
+      updateCustomPitch();
+      initLeverageChart();
+      updateLever();
+      renderVocab();
+      renderQuiz();
+    });
   </script>
 </body>
 </html>
