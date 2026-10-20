@@ -24,12 +24,15 @@
           <h2 class="text-xl font-bold text-white">Part 1: The 3-Step "Crocodile Brain" Pitch Framework</h2>
           <p class="text-xs text-slate-400 mt-0.5">How each step of the script is engineered to wake up the primitive brain without triggering resistance.</p>
         </div>
-        <div class="flex gap-1.5 bg-slate-800 p-1 rounded-lg">
-          <button id="ex-template" onclick="setExample('template')" class="px-3 py-1.5 text-xs font-medium rounded-md bg-emerald-600 text-white">
+        <div class="flex flex-wrap gap-1.5 bg-slate-800 p-1 rounded-lg">
+          <button id="ex-template" onclick="setExample('template')" class="px-3 py-1.5 text-xs font-medium rounded-md text-slate-300 hover:text-white">
             📋 Lesson Template
           </button>
+          <button id="ex-dog" onclick="setExample('dog')" class="px-3 py-1.5 text-xs font-medium rounded-md bg-emerald-600 text-white">
+            🐶 Boss Pitch: "Bring Your Dog Fridays"
+          </button>
           <button id="ex-ai" onclick="setExample('ai')" class="px-3 py-1.5 text-xs font-medium rounded-md text-slate-300 hover:text-white">
-            💡 Filled Example
+            💼 B2B Example
           </button>
         </div>
       </div>
@@ -179,18 +182,21 @@
 
   <script>
     function setExample(mode) {
-      const isTemplate = mode === 'template';
-      document.getElementById('ex-template').className = isTemplate
-        ? 'px-3 py-1.5 text-xs font-medium rounded-md bg-emerald-600 text-white'
-        : 'px-3 py-1.5 text-xs font-medium rounded-md text-slate-300 hover:text-white';
-      document.getElementById('ex-ai').className = !isTemplate
-        ? 'px-3 py-1.5 text-xs font-medium rounded-md bg-emerald-600 text-white'
-        : 'px-3 py-1.5 text-xs font-medium rounded-md text-slate-300 hover:text-white';
+      ['template', 'dog', 'ai'].forEach(m => {
+        const btn = document.getElementById('ex-' + m);
+        btn.className = (m === mode)
+          ? 'px-3 py-1.5 text-xs font-medium rounded-md bg-emerald-600 text-white'
+          : 'px-3 py-1.5 text-xs font-medium rounded-md text-slate-300 hover:text-white';
+      });
 
-      if (isTemplate) {
+      if (mode === 'template') {
         document.getElementById('step1-quote').innerHTML = '"Over the past <strong class="text-amber-400">[6-18 months]</strong>, the market / operational landscape in <strong class="text-amber-400">[industry]</strong> has shifted..."';
         document.getElementById('step2-quote').innerHTML = '"Yet, most organizations are still relying on <strong class="text-rose-400">legacy approaches</strong>, leading to <strong class="text-rose-400">[cost / bottleneck]</strong>..."';
         document.getElementById('step3-quote').innerHTML = '"Our objective today is to explore how <strong class="text-emerald-400">[our solution]</strong> eliminates this friction and delivers <strong class="text-emerald-400">[specific, quantified outcome]</strong>."';
+      } else if (mode === 'dog') {
+        document.getElementById('step1-quote').innerHTML = '"Over the past <strong class="text-amber-400">12 months</strong>, the <strong class="text-amber-400">operational landscape in hybrid workplaces</strong> has shifted toward making in-office days high-energy and collaborative..."';
+        document.getElementById('step2-quote').innerHTML = '"Yet, most offices are still relying on <strong class="text-rose-400">legacy approaches</strong> like strict Friday mandates, leading to <strong class="text-rose-400">end-of-week burnout, empty desks, and a bottleneck in team morale</strong>..."';
+        document.getElementById('step3-quote').innerHTML = '"Our objective today is to explore how a <strong class="text-emerald-400">structured \'Bring Your Dog to Work Friday\' pilot</strong> eliminates this friction and delivers <strong class="text-emerald-400">a 30% boost in Friday attendance at $0 cost</strong>."';
       } else {
         document.getElementById('step1-quote').innerHTML = '"Over the past <strong class="text-amber-400">12 months</strong>, the operational landscape in <strong class="text-amber-400">global logistics</strong> has shifted toward real-time AI routing..."';
         document.getElementById('step2-quote').innerHTML = '"Yet, most organizations are still relying on <strong class="text-rose-400">legacy spreadsheet tracking</strong>, leading to <strong class="text-rose-400">18% wasted fuel costs and delivery bottlenecks</strong>..."';
