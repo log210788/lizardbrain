@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lizard Brain, Persuasion & Leverage — Lesson Notes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased min-h-screen p-6 md:p-10">
+  <div class="max-w-4xl mx-auto space-y-8">
+    <header class="border-b border-slate-800 pb-6">
+      <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400">25-Minute Preply Trial Lesson Notes</span>
+      <h1 class="text-3xl font-bold mt-1">The Lizard Brain, Persuasion & The Mechanics of "Leverage"</h1>
+      <p class="text-slate-400 mt-2 text-sm">
+        Connecting how the primitive brain makes decisions with the physics and financial vocabulary of <strong>leverage</strong>.
+      </p>
+    </header>
+
+    <!-- Interactive Diagram Card -->
+    <section class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
+        <div>
+          <h2 class="text-lg font-semibold">Interactive Lever Diagram: Physics vs. Trading vs. Persuasion</h2>
+          <p class="text-xs text-slate-400">Adjust the leverage ratio slider and switch domains to see how the vocabulary maps across fields.</p>
+        </div>
+        <div class="flex gap-1 bg-slate-800 p-1 rounded-lg">
+          <button id="tab-physics" onclick="setMode('physics')" class="px-3 py-1.5 text-xs font-medium rounded-md bg-indigo-600 text-white">
+            1. Physics
+          </button>
+          <button id="tab-trading" onclick="setMode('trading')" class="px-3 py-1.5 text-xs font-medium rounded-md text-slate-300 hover:text-white">
+            2. Trading / Business
+          </button>
+          <button id="tab-persuasion" onclick="setMode('persuasion')" class="px-3 py-1.5 text-xs font-medium rounded-md text-slate-300 hover:text-white">
+            3. Lizard Brain & Persuasion
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 pt-5 items-center">
+        <div class="md:col-span-7 flex flex-col items-center">
+          <svg id="lever-svg" viewBox="0 0 460 185" class="w-full max-w-[460px] h-[190px] overflow-visible">
+            <line x1="20" y1="155" x2="440" y2="155" stroke="#475569" stroke-width="2" stroke-dasharray="4 4" />
+            <g id="beam-group" transform="rotate(-5, 310, 120)">
+              <line id="effort-arm" x1="55" y1="120" x2="310" y2="120" stroke="#3b82f6" stroke-width="6" stroke-linecap="round" />
+              <line id="load-arm" x1="310" y1="120" x2="405" y2="120" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" />
+              <g transform="translate(55, 120)">
+                <line x1="0" y1="-58" x2="0" y2="-10" stroke="#3b82f6" stroke-width="3" />
+                <polygon points="-6,-14 6,-14 0,-2" fill="#3b82f6" />
+                <rect x="-46" y="-82" width="92" height="22" rx="4" fill="#3b82f6" />
+                <text id="svg-effort-label" x="0" y="-67" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="600">Effort (100N)</text>
+              </g>
+              <g transform="translate(405, 120)">
+                <rect id="load-box" x="-38" y="-54" width="76" height="48" rx="6" fill="#f59e0b" />
+                <text id="svg-load-title" x="0" y="-33" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="700">LOAD</text>
+                <text id="svg-load-value" x="0" y="-17" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="600">500N</text>
+                <line x1="0" y1="-60" x2="0" y2="-78" stroke="#10b981" stroke-width="3" />
+                <polygon points="-6,-74 6,-74 0,-84" fill="#10b981" />
+              </g>
+            </g>
+            <g id="fulcrum-group" transform="translate(310, 120)">
+              <polygon points="0,0 -22,35 22,35" fill="#8b5cf6" />
+              <text id="svg-fulcrum-label" x="0" y="52" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="600">Fulcrum (Pivot)</text>
+            </g>
+          </svg>
+
+          <div class="w-full flex items-center gap-3 px-2 pt-2">
+            <span class="text-xs font-medium text-slate-400 whitespace-nowrap">Leverage Ratio:</span>
+            <input id="ratio-slider" type="range" min="1" max="10" step="1" value="5" oninput="updateDiagram()" class="w-full accent-indigo-500 cursor-pointer" />
+            <span id="ratio-badge" class="px-2.5 py-1 text-xs font-bold rounded bg-slate-800 text-indigo-300 whitespace-nowrap">5x (5:1)</span>
+          </div>
+        </div>
+
+        <div class="md:col-span-5 flex flex-col gap-3">
+          <div class="p-3 rounded-xl border border-slate-800 bg-slate-950/60">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-blue-400" id="card-effort-title">EFFORT (Small Input)</span>
+              <span class="text-xs font-mono font-semibold text-slate-200" id="card-effort-metric">100 N Force</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-1" id="card-effort-desc">
+              The small force you apply at the long end of the lever arm.
+            </p>
+          </div>
+
+          <div class="p-3 rounded-xl border border-slate-800 bg-slate-950/60">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-purple-400" id="card-fulcrum-title">FULCRUM (The Multiplier)</span>
+              <span class="text-xs font-mono font-semibold text-slate-200" id="card-fulcrum-metric">5x Mechanical Advantage</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-1" id="card-fulcrum-desc">
+              The pivot point. Moving it closer to the load multiplies your force.
+            </p>
+          </div>
+
+          <div class="p-3 rounded-xl border border-slate-800 bg-slate-950/60">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-amber-400" id="card-load-title">LOAD (Amplified Result)</span>
+              <span class="text-xs font-mono font-semibold text-slate-200" id="card-load-metric">500 N Lifted</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-1" id="card-load-desc">
+              A heavy weight that would be impossible to lift with bare hands alone.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 pt-3 border-t border-slate-800 text-xs text-slate-300" id="takeaway-text">
+        <strong>Physics Vocab:</strong> <em>Fulcrum / Pivot</em>, <em>Effort (Input Force)</em>, <em>Load (Resistance)</em>, <em>Mechanical Advantage</em>.
+      </div>
+    </section>
+  </div>
+
+  <script>
+    let currentMode = 'physics';
+    function setMode(mode) {
+      currentMode = mode;
+      ['physics', 'trading', 'persuasion'].forEach(m => {
+        const btn = document.getElementById('tab-' + m);
+        btn.className = m === mode
+          ? 'px-3 py-1.5 text-xs font-medium rounded-md bg-indigo-600 text-white'
+          : 'px-3 py-1.5 text-xs font-medium rounded-md text-slate-300 hover:text-white';
+      });
+      updateDiagram();
+    }
+    function updateDiagram() {
+      const ratio = parseInt(document.getElementById('ratio-slider').value, 10);
+      document.getElementById('ratio-badge').textContent = ratio + 'x (' + ratio + ':1)';
+      const fulcrumX = 200 + ((ratio - 1) / 9) * 155;
+      const tilt = -2 - (ratio * 0.5);
+      document.getElementById('fulcrum-group').setAttribute('transform', `translate(${fulcrumX}, 120)`);
+      document.getElementById('beam-group').setAttribute('transform', `rotate(${tilt}, ${fulcrumX}, 120)`);
+      document.getElementById('effort-arm').setAttribute('x2', fulcrumX);
+      document.getElementById('load-arm').setAttribute('x1', fulcrumX);
+
+      if (currentMode === 'physics') {
+        const effort = 100;
+        const load = effort * ratio;
+        document.getElementById('svg-effort-label').textContent = `Effort (${effort}N)`;
+        document.getElementById('svg-fulcrum-label').textContent = 'Fulcrum (Pivot)';
+        document.getElementById('svg-load-title').textContent = 'LOAD';
+        document.getElementById('svg-load-value').textContent = `${load}N`;
+        document.getElementById('card-effort-title').textContent = 'EFFORT (Input Force)';
+        document.getElementById('card-effort-metric').textContent = `${effort} N`;
+        document.getElementById('card-effort-desc').textContent = 'Small force applied at the long end of the lever arm.';
+        document.getElementById('card-fulcrum-title').textContent = 'FULCRUM (Pivot Point)';
+        document.getElementById('card-fulcrum-metric').textContent = `${ratio}x Mechanical Advantage`;
+        document.getElementById('card-fulcrum-desc').textContent = 'Transfers energy; longer effort arm = greater force multiplication.';
+        document.getElementById('card-load-title').textContent = 'LOAD (Output Force)';
+        document.getElementById('card-load-metric').textContent = `${load} N Lifted`;
+        document.getElementById('card-load-desc').textContent = 'Heavy resistance moved with minimal effort.';
+        document.getElementById('takeaway-text').innerHTML = '<strong>Physics Vocab:</strong> <em>Fulcrum / Pivot</em>, <em>Effort (Input Force)</em>, <em>Load (Resistance)</em>, <em>Mechanical Advantage</em>.';
+      } else if (currentMode === 'trading') {
+        const margin = 1000;
+        const exposure = margin * ratio;
+        const gain5pct = (exposure * 0.05).toLocaleString();
+        const roePct = (5 * ratio);
+        document.getElementById('svg-effort-label').textContent = `Margin ($1k)`;
+        document.getElementById('svg-fulcrum-label').textContent = 'Borrowed Capital';
+        document.getElementById('svg-load-title').textContent = 'EXPOSURE';
+        document.getElementById('svg-load-value').textContent = `$${(exposure/1000)}k`;
+        document.getElementById('card-effort-title').textContent = 'MARGIN / EQUITY (Your Cash)';
+        document.getElementById('card-effort-metric').textContent = `$${margin.toLocaleString()}`;
+        document.getElementById('card-effort-desc').textContent = 'Your own capital put down as collateral (initial margin) to open the trade.';
+        document.getElementById('card-fulcrum-title').textContent = 'BROKER DEBT (Financial Fulcrum)';
+        document.getElementById('card-fulcrum-metric').textContent = `${ratio}:1 Leverage`;
+        document.getElementById('card-fulcrum-desc').textContent = `Borrowed funds ($${(exposure - margin).toLocaleString()}) that multiply your market buying power.`;
+        document.getElementById('card-load-title').textContent = 'POSITION SIZE (Buying Power)';
+        document.getElementById('card-load-metric').textContent = `$${exposure.toLocaleString()} Exposure`;
+        document.getElementById('card-load-desc').textContent = `A 5% market move = ±$${gain5pct} (±${roePct}% on your $1k!). High leverage risks Liquidation / Margin Call.`;
+        document.getElementById('takeaway-text').innerHTML = '<strong>Trading Vocab:</strong> <em>Margin (Collateral)</em>, <em>Position Size / Exposure</em>, <em>Leverage Ratio</em>, <em>Margin Call / Liquidation</em>.';
+      } else {
+        document.getElementById('svg-effort-label').textContent = 'Simple Trigger';
+        document.getElementById('svg-fulcrum-label').textContent = 'Lizard Brain';
+        document.getElementById('svg-load-title').textContent = 'ACTION';
+        document.getElementById('svg-load-value').textContent = `${ratio}x Impact`;
+        document.getElementById('card-effort-title').textContent = 'PERSUASION INPUT (Low Friction)';
+        document.getElementById('card-effort-metric').textContent = 'Concrete + Visual Hook';
+        document.getElementById('card-effort-desc').textContent = 'Instead of heavy data, use a simple, tangible story, contrast, or emotional trigger.';
+        document.getElementById('card-fulcrum-title').textContent = 'THE LIZARD BRAIN (Psychological Fulcrum)';
+        document.getElementById('card-fulcrum-metric').textContent = 'Amygdala / Survival Drive';
+        document.getElementById('card-fulcrum-desc').textContent = 'Fast, instinctive, emotional brain (Fear, Safety, Status, Scarcity). Acts before logic.';
+        document.getElementById('card-load-title').textContent = 'DECISION SHIFT (Persuasion Output)';
+        document.getElementById('card-load-metric').textContent = 'High-Stakes "Yes"';
+        document.getElementById('card-load-desc').textContent = 'Once the Lizard Brain feels safe & motivated, the logical Neocortex rationalizes the decision.';
+        document.getElementById('takeaway-text').innerHTML = '<strong>Persuasion Vocab:</strong> <em>Lizard Brain (Reptilian/Limbic instinct)</em>, <em>Neocortex (Slow Logic)</em>, <em>Psychological Leverage (BATNA, Scarcity, Loss Aversion)</em>.';
+      }
+    }
+  </script>
+</body>
+</html>
